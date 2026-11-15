@@ -6,7 +6,7 @@
 
 namespace grpp {
 enum class DisplayMode { Windowed, Borderless, Fullscreen };
-#ifdef __ANDROID__
+#if defined(__ANDROID__) || defined(GRPP_APPLE_IOS)
 inline constexpr bool DisplaySelectionAvailable = false;
 #else
 inline constexpr bool DisplaySelectionAvailable = true;

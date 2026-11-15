@@ -138,6 +138,12 @@ GlesRenderer::GlesRenderer(SDL_Window *window, const Assets &assets) : window_(w
     driver_ = reinterpret_cast<const char *>(glGetString(GL_VERSION));
     if (driver_.find("OpenGL ES 3.") == std::string::npos)
         throw std::runtime_error("A GLES 3.x context is required; got " + driver_);
+#ifdef GRPP_APPLE_ANGLE
+    const std::string renderer = reinterpret_cast<const char *>(glGetString(GL_RENDERER));
+    if (renderer.find("Metal") == std::string::npos)
+        throw std::runtime_error("The Apple ANGLE build requires Metal; got " + renderer);
+    SDL_Log("Apple ANGLE renderer: %s", renderer.c_str());
+#endif
     SDL_GL_SetSwapInterval(1);
     plainProgram_ = spriteProgram(fragmentSource);
     std::string encoded(fragmentSource);
@@ -270,6 +276,15 @@ void GlesRenderer::present(const Canvas &sourceCanvas, const Assets &assets, boo
                            double decorativeFrameOffset, int orientation, bool expanded,
                            bool boundaries, const std::array<float, 2> *desktopCursor,
                            const std::vector<uint16_t> *softwareBackdrop) {
+#ifdef GRPP_APPLE_IOS
+    // UIKit owns a nonzero drawable framebuffer and can replace it on resize.
+    const auto screenFramebuffer = static_cast<GLuint>(SDL_GetNumberProperty(
+        SDL_GetWindowProperties(window_), SDL_PROP_WINDOW_UIKIT_OPENGL_FRAMEBUFFER_NUMBER, 0));
+    if (!screenFramebuffer)
+        throw std::runtime_error("UIKit drawable framebuffer is unavailable");
+#else
+    constexpr GLuint screenFramebuffer = 0;
+#endif
     // Original mode is a complete 240x320 RGB565 raster enlarged by nearest sampling.
     if (reference)
         linear = false;
@@ -343,7 +358,7 @@ void GlesRenderer::present(const Canvas &sourceCanvas, const Assets &assets, boo
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             throw std::runtime_error("Orientation framebuffer incomplete");
     } else
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glBindFramebuffer(GL_FRAMEBUFFER, screenFramebuffer);
 
     selectProgram(phosphor);
     if (phosphor)
@@ -547,13 +562,13 @@ void GlesRenderer::present(const Canvas &sourceCanvas, const Assets &assets, boo
     flushBeams();
     glDisable(GL_SCISSOR_TEST);
     if (phosphor)
-        beams_->endFrame(resolveDirect ? 0
+        beams_->endFrame(resolveDirect ? screenFramebuffer
                          : orientation ? rotationFramebuffer_
-                                       : 0,
+                                       : screenFramebuffer,
                          resolveDirect ? outputWidth : width, resolveDirect ? outputHeight : height,
                          resolveDirect ? orientation : 0);
     if (orientation && !resolveDirect) {
-        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glBindFramebuffer(GL_FRAMEBUFFER, screenFramebuffer);
         glViewport(0, 0, outputWidth, outputHeight);
         selectProgram(false);
         glUseProgram(program_);
@@ -607,7 +622,7 @@ void GlesRenderer::present(const Canvas &sourceCanvas, const Assets &assets, boo
                 rectangle(-1 - pad, 3 - pad, 1 + pad, 10 + pad, ink);
             }
             // Physical screen overlay: unaffected by rotation, letterboxing or phosphor.
-            glBindFramebuffer(GL_FRAMEBUFFER, 0);
+            glBindFramebuffer(GL_FRAMEBUFFER, screenFramebuffer);
             glViewport(0, 0, outputWidth, outputHeight);
             glDisable(GL_SCISSOR_TEST);
             selectProgram(false);

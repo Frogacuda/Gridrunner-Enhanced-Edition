@@ -92,6 +92,13 @@ For GPU rendering checks, configure `GRPP_RUN_RENDER_TESTS=ON` on a GLES 3 syste
 `cmake --build build --config Release --target check` builds and runs registered
 checks. See tests/README.md for fixture provenance and scope.
 
+### Experimental Apple configuration
+
+An optional [Apple CMake entry point](ports/apple/README.md) provides a macOS
+ANGLE/Metal experiment and an iOS native-GLES development configuration. These
+are separate from the validated Windows/Android release and require Apple hardware
+validation.
+
 ### Android
 
 Use Java 21, SDK platform/build tools 35, NDK 27.2.12479018 and SDK CMake 3.22.1.

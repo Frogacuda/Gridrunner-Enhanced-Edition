@@ -1,4 +1,7 @@
 #include "audio.hpp"
+#ifdef GRPP_APPLE_ANGLE
+#include "apple_angle.hpp"
+#endif
 #include "gles_renderer.hpp"
 #include "grpp/background.hpp"
 #include "grpp/clock.hpp"
@@ -220,6 +223,9 @@ int run(const Options &opt) {
     if (opt.editionTest)
         SDL_SetHint(SDL_HINT_AUDIO_DRIVER, "dummy");
 #endif
+#ifdef GRPP_APPLE_ANGLE
+    prepareAppleAngle();
+#endif
     SDL_SetAppMetadata("Gridrunner++ Enhanced", "0.18.0", "org.llamasoft.grpp.enhanced");
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | (opt.audio ? SDL_INIT_AUDIO : 0)))
         throw std::runtime_error(SDL_GetError());
@@ -287,6 +293,9 @@ int run(const Options &opt) {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+#ifdef GRPP_APPLE_ANGLE
+    configureAppleAngle();
+#endif
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 0);
     SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 0);
