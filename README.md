@@ -1,9 +1,18 @@
 # Gridrunner++ Enhanced 1.0
 
-A native Windows and Android edition of Llamasoft's Gridrunner++, including
-Arse on Fire and an independent Endurance mode. Enhanced graphics add glowing
-vector beams and a grid rendered at the display's resolution. Original graphics
-retain the RGB565 software presentation. Both share the same gameplay core.
+This project updates and modernizes Llamasoft's Gridrunner++, originally
+developed for PocketPC and Windows computers. It was created by decompiling
+and rebuilding the original Windows code, and then modernized with improved
+screen resizing/orientation handling, additional control modalities (touch and
+controller), and improved responsiveness.
+
+In addition to faithfully preserving the game as it originally ran, it allows
+players to hot-swap between a number of optional enhancements in realtime,
+including a responsive expanded viewport allowing for fullscreen play across 
+orientations, dynamic or capped frame rates up to 200Hz, and enhanced rendering 
+simulating vector and particle elements as phosphor beams. The new renderer is 
+considerably heavier than the original game, but I have taken care to optimize 
+it to perform on low-end mobile hardware.
 
 ## Install and play
 
