@@ -1,0 +1,75 @@
+// Default profile data exported from the verified Arse on Fire image.
+#pragma once
+#include "grpp/mechanisms.hpp"
+namespace grpp::aof {
+inline Scores defaultScores(){Scores s;
+s.normal[0]={"GOATY   ",50000u};
+s.normal[1]={"SHEEPY  ",48000u};
+s.normal[2]={"STINKY  ",40000u};
+s.normal[3]={"BEASTIE ",38000u};
+s.normal[4]={"CAMEL   ",30000u};
+s.normal[5]={"LLAMA   ",28000u};
+s.normal[6]={"FLOSSIE ",20000u};
+s.normal[7]={"SHAGGY  ",18000u};
+s.normal[8]={"FLUFFY  ",10000u};
+s.normal[9]={"UNDERWORLD",800u};
+s.underworld[0]={"UNDERWORLD",1000u};
+s.underworld[1]={"UNDERWORLD",1000u};
+s.underworld[2]={"UNDERWORLD",1000u};
+s.underworld[3]={"UNDERWORLD",1000u};
+s.underworld[4]={"UNDERWORLD",1000u};
+s.underworld[5]={"UNDERWORLD",1000u};
+s.underworld[6]={"UNDERWORLD",1000u};
+s.underworld[7]={"UNDERWORLD",1000u};
+s.underworld[8]={"UNDERWORLD",1000u};
+s.underworld[9]={"UNDERWORLD",1000u};
+s.underworld[10]={"UNDERWORLD",1000u};
+s.underworld[11]={"UNDERWORLD",1000u};
+s.underworld[12]={"UNDERWORLD",1000u};
+s.underworld[13]={"UNDERWORLD",1000u};
+s.underworld[14]={"UNDERWORLD",1000u};
+s.underworld[15]={"UNDERWORLD",1000u};
+s.underworld[16]={"UNDERWORLD",1000u};
+s.underworld[17]={"UNDERWORLD",1000u};
+s.underworld[18]={"UNDERWORLD",1000u};
+s.underworld[19]={"UNDERWORLD",1000u};
+s.underworld[20]={"UNDERWORLD",1000u};
+s.underworld[21]={"UNDERWORLD",1000u};
+s.underworld[22]={"UNDERWORLD",1000u};
+s.underworld[23]={"UNDERWORLD",1000u};
+s.underworld[24]={"UNDERWORLD",1000u};
+s.underworld[25]={"UNDERWORLD",1000u};
+s.underworld[26]={"UNDERWORLD",1000u};
+s.underworld[27]={"UNDERWORLD",1000u};
+s.underworld[28]={"UNDERWORLD",1000u};
+s.underworld[29]={"UNDERWORLD",1000u};
+s.underworld[30]={"UNDERWORLD",1000u};
+s.underworld[31]={"UNDERWORLD",1000u};
+s.underworld[32]={"UNDERWORLD",1000u};
+s.underworld[33]={"UNDERWORLD",1000u};
+s.underworld[34]={"UNDERWORLD",1000u};
+s.underworld[35]={"UNDERWORLD",1000u};
+s.underworld[36]={"UNDERWORLD",1000u};
+s.underworld[37]={"UNDERWORLD",1000u};
+s.underworld[38]={"UNDERWORLD",1000u};
+s.underworld[39]={"UNDERWORLD",1000u};
+s.underworld[40]={"UNDERWORLD",1000u};
+s.underworld[41]={"UNDERWORLD",1000u};
+s.underworld[42]={"UNDERWORLD",1000u};
+s.underworld[43]={"UNDERWORLD",1000u};
+s.underworld[44]={"UNDERWORLD",1000u};
+s.underworld[45]={"UNDERWORLD",1000u};
+s.underworld[46]={"UNDERWORLD",1000u};
+s.underworld[47]={"UNDERWORLD",1000u};
+s.underworld[48]={"UNDERWORLD",1000u};
+s.underworld[49]={"UNDERWORLD",1000u};
+s.players[0]={"MUSK_OX",4u,3u,0u,0u,0u};
+s.players[1]={"SHEEPIE",4u,3u,0u,0u,0u};
+s.players[2]={"GOATY",4u,3u,0u,0u,0u};
+s.players[3]={"BEASTIE",4u,3u,0u,0u,0u};
+s.guest={"UNDERWORLD",4u,3u,0u,0u,0u};
+s.enduranceMaster={"VINDALOO",1000u};s.enduranceLevel=0u;s.extendedFormat=true;
+s.alternateCraftUnlocked=1;return s;}
+inline const char* titleCredit="BARKING VINDALOO CRAZY!";
+inline const std::array<const char*,27> slogans={{"* IT'S MORE FUN THAN CURRY!  *","*WHICH BASTARD ORDERED LAMB??*","* PASS THE GARLIC NAAN THEN  *","*THREE SPICY PAPPADOMS PLEASE*","*OOH, PINT OF KINGFISHER, TA!*","*   DID YOU JUST DROP ONE?   *","* I THINK I'M GOING TO PUKE! *","*I DO BELIEVE IT'S YOUR ROUND*","*  ANYONE GOT ANY RIZLAS?    *","*IT MUST BE CURRY TIME BY NOW*","*THESE PAPPADOMS AREN'T SPICY*","*  WHERE'S THE LIME PICKLE?  *","*   AWWWW! FLUFFY SHEEPIE!   *","* 20 YEARS OF CURRY CHOMPING *","*   FOR THE LOVE OF CURRY    *","*  BOG ROLL IN THE FRIDGE?   *","*   -- GOD, I'M PISSED --    *","* ARSE LIKE A JAPANESE FLAG  *","* I THINK MY ARSE IS BROKEN  *","* YEAH, I'LL HAVE A PUFF, TA *","*  CAN I KIP ON YOUR FLOOR?  *","* I THINK WE NEED MORE BEER  *","*     DON'T MIND IF I DO!    *","*  BLOODY HELL, IT'S 4:30!   *","* ALL HAIL! IT'S PI O'CLOCK! *","* WHERE'S THE NEAREST TUBE?  *","*     *** UUUUURP! ***       *"}};
+}

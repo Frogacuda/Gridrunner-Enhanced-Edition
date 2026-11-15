@@ -1,0 +1,21 @@
+Third-party and retained-rights notices
+
+SDL 3.2.24: copyright Sam Lantinga and contributors, zlib license (LICENSES/SDL3.txt).
+SDL's HIDAPI component: copyright Alan Ott and contributors, BSD terms selected
+from its offered licenses (LICENSES/HIDAPI-BSD.txt). SDL YUV conversion code:
+LICENSES/YUV2RGB.txt. These notices cover components of the bundled SDL library.
+
+GLAD 2.0.8 generated loader: (WTFPL OR CC0-1.0) AND Apache-2.0, selecting CC0-1.0
+for this distribution. See LICENSES/CC0-1.0.txt and Apache-2.0.txt. Khronos platform
+types retain their copyright/permission notice in LICENSES/Khronos.txt and source.
+
+Neon vector mesh and rendering support: independently authored project code;
+project contribution terms apply to original contributions. Menu glyph forms
+retain the separate provenance in LICENSES/Vector-font-provenance.txt. Gridrunner
+uses its original bitmap text assets for its game and menus.
+
+The Gradle wrapper is an Apache-2.0 build dependency, not part of the running game.
+Its source headers and LICENSES/Apache-2.0.txt retain the applicable terms.
+
+Original game data, artwork, audio, text and icon artwork retain their respective
+rights. See LICENSE.txt; their inclusion does not relicense them under 0BSD.

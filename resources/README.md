@@ -1,0 +1,1 @@
+The original application-icon JPEG and its PNG/ICO derivatives are kept together. Android uses the 512px PNG, Windows embeds the multi-resolution ICO and loads assets/app-icon.bmp for its window icon. The artwork retains the original game-asset rights described in LICENSE.txt.

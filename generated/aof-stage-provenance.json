@@ -1,0 +1,6575 @@
+{
+  "hash": "dcf7e257a7ed8014a91f01dd1fcf35fbff7c357452838223cc16639e82dfcad6",
+  "stageTable": "0042d1a8",
+  "stages": [
+    {
+      "address": "42c32c",
+      "caption": "EVERYTHING, EVERYTHING",
+      "sources": [
+        166,
+        164
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1024,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 2,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 6,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772002,
+        2130772003,
+        2164260864,
+        2130772003,
+        65570,
+        2147614720,
+        2130837522,
+        2130837555,
+        2164260864,
+        2130837523,
+        131122,
+        2147614720,
+        2130903090,
+        2130903091,
+        2164260864,
+        2399404032,
+        2130968819
+      ]
+    },
+    {
+      "address": "42b188",
+      "caption": "EMASCULINITY",
+      "sources": [
+        352,
+        350
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 68,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 80,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 2,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 6,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147745792,
+        2130772002,
+        2130772035,
+        2164260864,
+        2130772003,
+        65570,
+        2147745792,
+        2130837602,
+        2130837635,
+        2164260864,
+        2130837523,
+        131122,
+        2147745792,
+        2130903202,
+        2130903091,
+        2164260864,
+        2399404032,
+        2130968819
+      ]
+    },
+    {
+      "address": "42cda4",
+      "caption": "PRETTY DEADLY",
+      "sources": [
+        218,
+        220
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 96,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 140,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 2,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 6,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772000,
+        2130772192,
+        2164260864,
+        2130772000,
+        65760,
+        2147745792,
+        2130837568,
+        2130837696,
+        2164260864,
+        2130837568,
+        131264,
+        2147876864,
+        2130903136,
+        2130903200,
+        2164260864,
+        2399404032,
+        2130968672
+      ]
+    },
+    {
+      "address": "42ad14",
+      "caption": "HURTS LIKE DEBUGGERY",
+      "sources": [
+        356,
+        354
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 7,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1024,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 100,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 10,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 16,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147745792,
+        2130772002,
+        2130772003,
+        2164260864,
+        2130772003,
+        65570,
+        2147745792,
+        2130837522,
+        2130837555,
+        2164260864,
+        2130837523,
+        131122,
+        2147745792,
+        2130903090,
+        2130903091,
+        2164260864,
+        2399404032,
+        2130968819
+      ]
+    },
+    {
+      "address": "42c750",
+      "caption": "EMISSION CONTROL",
+      "sources": [
+        140,
+        250
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 327680,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 80,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 160,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147745792,
+        2130772002,
+        2130772003,
+        2164260864,
+        2130772003,
+        65570,
+        2147745792,
+        2130837570,
+        2130837571,
+        2164260864,
+        2130837571,
+        131138,
+        2147745792,
+        2130903170,
+        2130903171,
+        2164260864,
+        2130903171,
+        196738,
+        2147745792,
+        2130968738,
+        2130968739,
+        2164260864,
+        2399404032,
+        2130968739
+      ]
+    },
+    {
+      "address": "42a9bc",
+      "caption": "HAWAIIAN ECLIPSE",
+      "sources": [
+        210,
+        212
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1536,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1536,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 327680,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 86,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 120,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147745792,
+        2130772258,
+        2130772259,
+        2164260864,
+        2130772259,
+        65826,
+        2147745792,
+        2130837634,
+        2130837699,
+        2164260864,
+        2130837747,
+        131138,
+        2147745792,
+        2130903074,
+        2130903171,
+        2164260864,
+        2130903171,
+        196642,
+        2147745792,
+        2130968738,
+        2130968595,
+        2164260864,
+        2399404032,
+        2130968739
+      ]
+    },
+    {
+      "address": "42c824",
+      "caption": "DIRTY DOWNLOAD",
+      "sources": [
+        160,
+        162
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 2048,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 2048,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772000,
+        2130772192,
+        2164260864,
+        2130772000,
+        65760,
+        2147614720,
+        2130837568,
+        2130837696,
+        2164260864,
+        2130837568,
+        131264,
+        2147614720,
+        2130903136,
+        2130903200,
+        2164260864,
+        2399404032,
+        2130968672
+      ]
+    },
+    {
+      "address": "42c188",
+      "caption": "O T F R",
+      "sources": [
+        156,
+        158
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 2,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 6,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772258,
+        2130772259,
+        2164260864,
+        2130772259,
+        65826,
+        2147680256,
+        2130837778,
+        2130837811,
+        2164260864,
+        2130837779,
+        131378,
+        2147876864,
+        2130903346,
+        2130903347,
+        2164260864,
+        2399404032,
+        2130968595
+      ]
+    },
+    {
+      "address": "42d0f4",
+      "caption": "DIM DIOLCH",
+      "sources": [
+        148,
+        150
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 7,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1536,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1536,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 300,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147745792,
+        2130771968,
+        2164260864,
+        65536,
+        2147745792,
+        2130837505,
+        2164260864,
+        131073,
+        2147745792,
+        2130903042,
+        2164260864,
+        196610,
+        2147745792,
+        2130968579,
+        2164260864,
+        2399404032,
+        3
+      ]
+    },
+    {
+      "address": "42c4b8",
+      "caption": "POOR OLD POMPEY",
+      "sources": [
+        170,
+        168
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 2,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 6,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2131820834,
+        2131820835,
+        2164260864,
+        2131820835,
+        1114402,
+        2147614720,
+        2131886354,
+        2131886355,
+        2164260864,
+        2131886355,
+        1179922,
+        2147614720,
+        2131951890,
+        2131951891,
+        2164260864,
+        2399404032,
+        2132017427
+      ]
+    },
+    {
+      "address": "42c0cc",
+      "caption": "JOVIAN OBSESSION",
+      "sources": [
+        152,
+        154
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 2,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1024,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772002,
+        2130772003,
+        2164260864,
+        2130772003,
+        65570,
+        2147614720,
+        2130837522,
+        2130837555,
+        2164260864,
+        2130837523,
+        131122,
+        2147614720,
+        2130903090,
+        2130903091,
+        2164260864,
+        2399404032,
+        2130968819
+      ]
+    },
+    {
+      "address": "42aed4",
+      "caption": "DIE YOU GITS!",
+      "sources": [
+        214,
+        216
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 3,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 3,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 7,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 128,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 200,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 16,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 24,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 32,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        65536,
+        131072,
+        196608,
+        2399404032,
+        262144
+      ]
+    },
+    {
+      "address": "42ce60",
+      "caption": "ONCE WE SCROLLED UPWARDS",
+      "sources": [
+        222,
+        224
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 96,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 140,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772000,
+        2130772192,
+        2164260864,
+        2130772000,
+        65760,
+        2147745792,
+        2130837570,
+        2130837699,
+        2164260864,
+        2130837568,
+        131264,
+        2147876864,
+        2130903139,
+        2130903202,
+        2164260864,
+        2399404032,
+        2130968672
+      ]
+    },
+    {
+      "address": "42ba1c",
+      "caption": "TRIPNET",
+      "sources": [
+        144,
+        146
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 2,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1024,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772002,
+        2130772003,
+        2164260864,
+        2130772003,
+        65570,
+        2147614720,
+        2130837522,
+        2130837555,
+        2164260864,
+        2130837523,
+        131122,
+        2147614720,
+        2130903090,
+        2130903091,
+        2164260864,
+        2399404032,
+        2130968819
+      ]
+    },
+    {
+      "address": "42cf1c",
+      "caption": "RESPECTING OUR ELDERS",
+      "sources": [
+        226,
+        228
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 96,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 140,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772000,
+        2130772192,
+        2164260864,
+        2130772000,
+        65760,
+        2147745792,
+        2130837569,
+        2130837697,
+        2164260864,
+        2130837568,
+        131265,
+        2147876864,
+        2130903136,
+        2130903201,
+        2164260864,
+        2399404032,
+        2130968673
+      ]
+    },
+    {
+      "address": "42b888",
+      "caption": "UNFORTUNATELY CONTINENTAL",
+      "sources": [
+        56,
+        58
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 7,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1024,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2133917730,
+        2130772003,
+        2132803712,
+        2164260864,
+        2133917731,
+        65570,
+        2147614720,
+        2130837522,
+        2133983283,
+        2132803712,
+        2164260864,
+        2130837523,
+        3276850,
+        2147614720,
+        2134048818,
+        2134048819,
+        2132803712,
+        2164260864,
+        2399404032,
+        2134114547
+      ]
+    },
+    {
+      "address": "42aa90",
+      "caption": "ANGEL DUST",
+      "sources": [
+        230,
+        230
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1024,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1024,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 140,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 2,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 3,
+            "address": "42a664"
+          }
+        ]
+      ],
+      "commands": [
+        2148007936,
+        2133917696,
+        2133917697,
+        2133917698,
+        2133917699,
+        2132803712,
+        2164260864,
+        2133917699,
+        3211266,
+        2147614720,
+        2133983282,
+        2133983283,
+        2132803712,
+        2164260864,
+        2399272960,
+        2133983232
+      ]
+    },
+    {
+      "address": "42b658",
+      "caption": "HERE COME THE WARM JETS",
+      "sources": [
+        246,
+        246
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1792,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1792,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 140,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 2,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 3,
+            "address": "42a664"
+          }
+        ]
+      ],
+      "commands": [
+        2148007936,
+        2131820544,
+        2131820544,
+        2131820544,
+        2131820544,
+        2132803712,
+        2164260864,
+        2131820544,
+        1114114,
+        2147614720,
+        2131886081,
+        2131886081,
+        2132803712,
+        2164260864,
+        2399272960,
+        2131886080
+      ]
+    },
+    {
+      "address": "42c670",
+      "caption": "LOGG JAM",
+      "sources": [
+        236,
+        234
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 160,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 2,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 6,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2131820834,
+        2130772002,
+        2131820835,
+        2130772003,
+        2164260864,
+        2131820835,
+        2130772003,
+        1114402,
+        2147745792,
+        2131886354,
+        2130837522,
+        2131886355,
+        2130837523,
+        2164260864,
+        2131886355,
+        2130837523,
+        1179922,
+        2147876864,
+        2131951890,
+        2133000210,
+        2131951891,
+        2130903059,
+        2164260864,
+        2399404032,
+        2132017427
+      ]
+    },
+    {
+      "address": "42b7c4",
+      "caption": "I DO LIKE BIG BANANAS",
+      "sources": [
+        242,
+        244
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 2,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 100,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2148007936,
+        2130771968,
+        2130771968,
+        2130771968,
+        2130771968,
+        2132803712,
+        2164260864,
+        2130771971,
+        65538,
+        2147614720,
+        2130837553,
+        2130837553,
+        2132803712,
+        2164260864,
+        2133983233,
+        3276801,
+        2148270080,
+        2132803712,
+        2130837553,
+        2164260864,
+        2399272960,
+        2133983232
+      ]
+    },
+    {
+      "address": "42bc70",
+      "caption": "A FURRED I PRODUCTION",
+      "sources": [
+        269,
+        271
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 160,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 2,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 40,
+          "address": "42a694"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2133917728,
+        2133917729,
+        2132803713,
+        2164260864,
+        2133917730,
+        3211299,
+        2147811328,
+        2133983249,
+        2133983283,
+        2132803713,
+        2164260864,
+        2133983249,
+        3276850,
+        2148139008,
+        2134048818,
+        2134048819,
+        2132803713,
+        2164260864,
+        2399404032,
+        2134114547
+      ]
+    },
+    {
+      "address": "42b004",
+      "caption": "THANKS SO MUCH",
+      "sources": [
+        232,
+        232
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 8,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 7,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1792,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1792,
+          "address": "42a670"
+        },
+        {
+          "setting": "SegmentCount",
+          "value": 4,
+          "address": "42a664"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 128,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 200,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 2,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147745792,
+        33619968,
+        33685504,
+        33751040,
+        2164260864,
+        2399404032,
+        3407873
+      ]
+    },
+    {
+      "address": "42b704",
+      "caption": "MIND THE GAP",
+      "sources": [
+        238,
+        240
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1024,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1024,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 200,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2148007936,
+        2130771968,
+        2130771969,
+        2130771970,
+        2130771971,
+        2132803712,
+        2164260864,
+        2130771971,
+        65538,
+        2147614720,
+        2130837554,
+        2130837555,
+        2132803712,
+        2164260864,
+        2133983232,
+        3276801,
+        2148270080,
+        2132803712,
+        2164260864,
+        2399272960,
+        2133983232
+      ]
+    },
+    {
+      "address": "42bba4",
+      "caption": "EVERYBODY IS IN THE PLACE",
+      "sources": [
+        267,
+        267
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1792,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 3,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 40,
+          "address": "42a694"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2133917728,
+        2133917728,
+        2164260864,
+        2133917728,
+        3211296,
+        2147811328,
+        2133983249,
+        2133983281,
+        2164260864,
+        2133983249,
+        3276849,
+        2148139008,
+        2134048818,
+        2134048819,
+        2164260864,
+        2399404032,
+        2134114547
+      ]
+    },
+    {
+      "address": "42b950",
+      "caption": "STINKY BEAST SURPRISE",
+      "sources": [
+        261,
+        261
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1024,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 20,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 256,
+          "address": "42a694"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2133917730,
+        2133917731,
+        2164260864,
+        2133917731,
+        3211298,
+        2147614720,
+        2133983250,
+        2133983283,
+        2164260864,
+        2133983251,
+        3276850,
+        2147614720,
+        2134048818,
+        2134048819,
+        2164260864,
+        2399404032,
+        2134114547
+      ]
+    },
+    {
+      "address": "42ac10",
+      "caption": "NO SHEEP TILL BASINGSTOKE",
+      "sources": [
+        348,
+        346
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1536,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1536,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 327680,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 342,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 240,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ]
+      ],
+      "commands": [
+        2147549184,
+        2130772258,
+        2130772259,
+        2130772002,
+        2130772003,
+        2131820578,
+        2131820579,
+        2131820834,
+        2131820835,
+        2164260864,
+        2130772259,
+        65826,
+        2147549184,
+        2130772258,
+        2130772259,
+        2130772002,
+        2130772003,
+        2131820578,
+        2131820579,
+        2131820834,
+        2131820835,
+        2164260864,
+        2130772259,
+        65826,
+        2147614720,
+        2130772258,
+        2130772259,
+        2130772002,
+        2130772003,
+        2131820578,
+        2131820579,
+        2131820834,
+        2131820835,
+        2164260864,
+        2399404032,
+        2130772259
+      ]
+    },
+    {
+      "address": "42ab3c",
+      "caption": "FURRY FRENZY",
+      "sources": [
+        302,
+        302
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1536,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1536,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 327680,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 342,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 120,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ]
+      ],
+      "commands": [
+        2147745792,
+        2130772258,
+        2130772259,
+        2131820578,
+        2131820579,
+        2164260864,
+        2130772259,
+        65826,
+        2147811328,
+        2130772258,
+        2130772259,
+        2131820578,
+        2131820579,
+        2164260864,
+        2130772259,
+        65826,
+        2147876864,
+        2130772258,
+        2130772259,
+        2131820578,
+        2131820579,
+        2164260864,
+        2399404032,
+        2130772259
+      ]
+    },
+    {
+      "address": "42cc1c",
+      "caption": "DAVID ICKE IS A LIZARD",
+      "sources": [
+        254,
+        252
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 2048,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 2048,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 240,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 260,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2134966304,
+        2134966496,
+        2164260864,
+        2134966304,
+        4260064,
+        2147745792,
+        2136080448,
+        2136080576,
+        2164260864,
+        2136080448,
+        5374144,
+        2147876864,
+        2135097440,
+        2136146080,
+        2164260864,
+        2399404032,
+        2135162976
+      ]
+    },
+    {
+      "address": "42cb38",
+      "caption": "GETTING AWAY WITH IT",
+      "sources": [
+        300,
+        300
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 2048,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 2048,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "SegmentCount",
+          "value": 1,
+          "address": "42a664"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        },
+        {
+          "setting": "HeadAttackParameters",
+          "value": 3145730,
+          "address": "42a668"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 2,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2134966305,
+        2136015072,
+        2134966369,
+        2136014976,
+        2164260864,
+        2134966305,
+        5308640,
+        2147614720,
+        2135031872,
+        2136080577,
+        2135031840,
+        2136080609,
+        2164260864,
+        2135031873,
+        5374144,
+        2147614720,
+        2136146016,
+        2136146048,
+        2136146080,
+        2136146112,
+        2164260864,
+        2399404032,
+        2135162976
+      ]
+    },
+    {
+      "address": "42ca68",
+      "caption": "SATURDAY MORNING SPECIAL",
+      "sources": [
+        296,
+        298
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1792,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1792,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        },
+        {
+          "setting": "HeadAttackParameters",
+          "value": 3145730,
+          "address": "42a668"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2134966305,
+        2136015072,
+        2132803713,
+        2164260864,
+        2134966305,
+        5308640,
+        2147614720,
+        2135031872,
+        2136080577,
+        2132803712,
+        2164260864,
+        2135031873,
+        5374144,
+        2147614720,
+        2136146016,
+        2136146080,
+        2132803713,
+        2164260864,
+        2399404032,
+        2135162976
+      ]
+    },
+    {
+      "address": "42c9a4",
+      "caption": "I'LL TAKE TWENTY",
+      "sources": [
+        294,
+        292
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 2048,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 2048,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        },
+        {
+          "setting": "HeadAttackParameters",
+          "value": 3145730,
+          "address": "42a668"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2136014881,
+        2134966496,
+        2164260864,
+        2136014881,
+        4260064,
+        2147614720,
+        2135031872,
+        2136080577,
+        2164260864,
+        2136080449,
+        4325568,
+        2147614720,
+        2135097440,
+        2135097504,
+        2164260864,
+        2399404032,
+        2135162976
+      ]
+    },
+    {
+      "address": "42b59c",
+      "caption": "PURPLE HAMPTON",
+      "sources": [
+        286,
+        286
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1024,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1024,
+          "address": "42a670"
+        },
+        {
+          "setting": "SegmentCount",
+          "value": 4,
+          "address": "42a664"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 140,
+          "address": "42a64c"
+        },
+        {
+          "setting": "HeadAttackParameters",
+          "value": 3145730,
+          "address": "42a668"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 5,
+          "address": "42a690"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        []
+      ],
+      "commands": [
+        2148007936,
+        2133917696,
+        2133917697,
+        2133917696,
+        2133917697,
+        2164260864,
+        2133917699,
+        3211266,
+        2147614720,
+        2133983281,
+        2133983280,
+        2164260864,
+        2399272960,
+        2133983232
+      ]
+    },
+    {
+      "address": "42c8e0",
+      "caption": "I TOUCHED A TRAMIEL ONCE",
+      "sources": [
+        290,
+        288
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 7,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 2048,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 2048,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        },
+        {
+          "setting": "HeadAttackParameters",
+          "value": 524291,
+          "address": "42a668"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2131820577,
+        2130772192,
+        2164260864,
+        2131820577,
+        65760,
+        2147614720,
+        2130837568,
+        2135032001,
+        2164260864,
+        2136080449,
+        131264,
+        2147614720,
+        2131951712,
+        2131951776,
+        2164260864,
+        2399404032,
+        2132017248
+      ]
+    },
+    {
+      "address": "42be40",
+      "caption": "TREVOR THE GOBLIN",
+      "sources": [
+        280,
+        282
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 0,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 3,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 160,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 0,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 16,
+          "address": "42a694"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772000,
+        2131820577,
+        2134966304,
+        2136014881,
+        2132803714,
+        2164260864,
+        2133917730,
+        5308451,
+        2147614720,
+        2130837521,
+        2136080435,
+        2133983249,
+        2131886131,
+        2132803712,
+        2164260864,
+        2133983249,
+        3276850,
+        2147680256,
+        2130903090,
+        2135097395,
+        2134048818,
+        2134048819,
+        2132803714,
+        2164260864,
+        2399404032,
+        2134114547
+      ]
+    },
+    {
+      "address": "42bf30",
+      "caption": "BERKSHIRE PEST CONTROL",
+      "sources": [
+        276,
+        276
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 160,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 8,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 256,
+          "address": "42a694"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2133917728,
+        2133917729,
+        2132803714,
+        2164260864,
+        2133917730,
+        3211299,
+        2147680256,
+        2133983249,
+        2133983283,
+        2132803715,
+        2164260864,
+        2133983249,
+        3276850,
+        2147745792,
+        2134048818,
+        2134048819,
+        2132803714,
+        2164260864,
+        2399404032,
+        2134114547
+      ]
+    },
+    {
+      "address": "42af58",
+      "caption": "LUMBERSOME",
+      "sources": [
+        284,
+        284
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 3,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 768,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 768,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 8,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 128,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 200,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 20,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 128,
+          "address": "42a694"
+        },
+        {
+          "setting": "HeadAttackParameters",
+          "value": 4194307,
+          "address": "42a668"
+        },
+        {
+          "setting": "SegmentCount",
+          "value": 3,
+          "address": "42a664"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 3,
+            "address": "42a650"
+          }
+        ],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 5,
+            "address": "42a650"
+          }
+        ],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 7,
+            "address": "42a650"
+          }
+        ],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 9,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        19988512,
+        20054112,
+        20119744,
+        20119792,
+        3342336,
+        2399404032,
+        262144
+      ]
+    },
+    {
+      "address": "42c008",
+      "caption": "BUWCH GOCH GOTA",
+      "sources": [
+        278,
+        278
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 1,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 0,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 2048,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 2048,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 320,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 160,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 8,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 128,
+          "address": "42a694"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 2,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 3,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 24,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ]
+      ],
+      "commands": [
+        2133917728,
+        2147745792,
+        2132803714,
+        2164260864,
+        2132803714,
+        2133983264,
+        2147745792,
+        2132803715,
+        2164260864,
+        2132803714,
+        2134048800,
+        2147745792,
+        2132803714,
+        2164260864,
+        2399404032,
+        2134048800
+      ]
+    },
+    {
+      "address": "42bad8",
+      "caption": "CHAOS THEORY",
+      "sources": [
+        265,
+        263
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1792,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1792,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 10,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 128,
+          "address": "42a694"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2133917728,
+        2133917728,
+        2164260864,
+        2133917728,
+        3211296,
+        2147811328,
+        2133983249,
+        2133983281,
+        2164260864,
+        2133983249,
+        3276849,
+        2148139008,
+        2134048818,
+        2134048819,
+        2164260864,
+        2399404032,
+        2134114547
+      ]
+    },
+    {
+      "address": "42ccd8",
+      "caption": "FORUM ADDICT",
+      "sources": [
+        257,
+        259
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 2048,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 2048,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 2,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 240,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 260,
+          "address": "42a64c"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2134966304,
+        2134966496,
+        2164260864,
+        2134966304,
+        4260064,
+        2147614720,
+        2136080449,
+        2136080577,
+        2130837569,
+        2131886273,
+        2164260864,
+        2136080448,
+        5374144,
+        2147680256,
+        2135097440,
+        2136146081,
+        2130903138,
+        2131951779,
+        2164260864,
+        2399404032,
+        2135162976
+      ]
+    },
+    {
+      "address": "42b4c8",
+      "caption": "KOOLER DOG",
+      "sources": [
+        328,
+        328
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "SegmentCount",
+          "value": 6,
+          "address": "42a664"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1024,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1024,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 140,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 4,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 32,
+          "address": "42a694"
+        },
+        {
+          "setting": "FlyingEnemyPlantsGrid",
+          "value": 1,
+          "address": "47ace0"
+        },
+        {
+          "setting": "FlyingEnemyTracking",
+          "value": 2,
+          "address": "47ace4"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        []
+      ],
+      "commands": [
+        2148007936,
+        2133917696,
+        2133917697,
+        2133917698,
+        2133917699,
+        2132803712,
+        2164260864,
+        2133917699,
+        3211266,
+        2147614720,
+        2133983282,
+        2133983283,
+        2132803712,
+        2164260864,
+        2399272960,
+        2133983232
+      ]
+    },
+    {
+      "address": "42bd48",
+      "caption": "DANCE OF THE KNOBSHIPS",
+      "sources": [
+        310,
+        308
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 0,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 5,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1792,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 768,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 160,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 5,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 128,
+          "address": "42a694"
+        },
+        {
+          "setting": "FlyingEnemyAlternateSpeed",
+          "value": 131072,
+          "address": "47ace8"
+        },
+        {
+          "setting": "HeadAttackParameters",
+          "value": 3145729,
+          "address": "42a668"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772000,
+        2131820576,
+        2134966304,
+        2136014880,
+        2132803714,
+        2164260864,
+        2133917730,
+        5308451,
+        2147811328,
+        2130837521,
+        2136080433,
+        2133983249,
+        2131886129,
+        2132803712,
+        2164260864,
+        2133983251,
+        3276850,
+        2148139008,
+        2130903090,
+        2135097395,
+        2134048818,
+        2134048819,
+        2132803714,
+        2164260864,
+        2399404032,
+        2134114545
+      ]
+    },
+    {
+      "address": "42c244",
+      "caption": "PEACE, OUT",
+      "sources": [
+        314,
+        312
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 60,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 8,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 128,
+          "address": "42a694"
+        },
+        {
+          "setting": "FlyingEnemyPlantsGrid",
+          "value": 1,
+          "address": "47ace0"
+        },
+        {
+          "setting": "FlyingEnemyAlternateSpeed",
+          "value": 65536,
+          "address": "47ace8"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 2,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 4,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 5,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2133917986,
+        2133917987,
+        2164260864,
+        2133917987,
+        2133917986,
+        2132803584,
+        2147680256,
+        2133983506,
+        2133983539,
+        2164260864,
+        2133983507,
+        2133983538,
+        2132803584,
+        2147876864,
+        2134049074,
+        2134049075,
+        2164260864,
+        2399404032,
+        2132803584
+      ]
+    },
+    {
+      "address": "42c3e8",
+      "caption": "HORNY BOTH ENDS",
+      "sources": [
+        306,
+        304
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 2304,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 260,
+          "address": "42a64c"
+        },
+        {
+          "setting": "FlyingEnemyPlantsGrid",
+          "value": 1,
+          "address": "47ace0"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 2,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772002,
+        2130772003,
+        2132803584,
+        2164260864,
+        2130772003,
+        65570,
+        2147745792,
+        2130837522,
+        2130837555,
+        2132803584,
+        2164260864,
+        2130837523,
+        131122,
+        2148007936,
+        2130903090,
+        2130903091,
+        2132803584,
+        2164260864,
+        2399404032,
+        2130968819
+      ]
+    },
+    {
+      "address": "42b244",
+      "caption": "CHUFF CHUFF BOOM",
+      "sources": [
+        344,
+        342
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1024,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1024,
+          "address": "42a670"
+        },
+        {
+          "setting": "SegmentCount",
+          "value": 4,
+          "address": "42a664"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 140,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 16,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 128,
+          "address": "42a694"
+        },
+        {
+          "setting": "FlyingEnemyPlantsGrid",
+          "value": 1,
+          "address": "47ace0"
+        },
+        {
+          "setting": "FlyingEnemyTracking",
+          "value": 2,
+          "address": "47ace4"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        []
+      ],
+      "commands": [
+        2147745792,
+        2133917696,
+        2133917697,
+        2133917698,
+        2133917699,
+        2132803712,
+        2132803713,
+        2164260864,
+        2133917699,
+        3211266,
+        2147614720,
+        2133983282,
+        2133983283,
+        2132803712,
+        2132803713,
+        2164260864,
+        2399272960,
+        2133983232
+      ]
+    },
+    {
+      "address": "42b098",
+      "caption": "BABYLON AN' TING",
+      "sources": [
+        340,
+        338
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 2304,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 68,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 80,
+          "address": "42a64c"
+        },
+        {
+          "setting": "SegmentCount",
+          "value": 8,
+          "address": "42a664"
+        },
+        {
+          "setting": "FlyingEnemyTracking",
+          "value": 2,
+          "address": "47ace4"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 2,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147745792,
+        2130772002,
+        2130772035,
+        2132803584,
+        2132803586,
+        2132803587,
+        2164260864,
+        2130772003,
+        65570,
+        2147745792,
+        2130837602,
+        2130837635,
+        2132803584,
+        2132803586,
+        2132803587,
+        2164260864,
+        2130837523,
+        131122,
+        2147745792,
+        2130903202,
+        2130903091,
+        2132803584,
+        2132803586,
+        2132803587,
+        2164260864,
+        2399404032,
+        2130968819
+      ]
+    },
+    {
+      "address": "42b320",
+      "caption": "SUPPOSITARY VOLANTE",
+      "sources": [
+        336,
+        334
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "SegmentCount",
+          "value": 6,
+          "address": "42a664"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 2048,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 2048,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 240,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 16,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 128,
+          "address": "42a694"
+        },
+        {
+          "setting": "FlyingEnemyPlantsGrid",
+          "value": 1,
+          "address": "47ace0"
+        },
+        {
+          "setting": "FlyingEnemyTracking",
+          "value": 2,
+          "address": "47ace4"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 4294967295,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2148007936,
+        2133917696,
+        2133917696,
+        2133917696,
+        2133917696,
+        2132803712,
+        2164260864,
+        2133917696,
+        3211264,
+        2147614720,
+        2133917744,
+        2133917744,
+        2132803712,
+        2164260864,
+        2399272960,
+        2133917696
+      ]
+    },
+    {
+      "address": "42b3f4",
+      "caption": "NEVER OFFLINE",
+      "sources": [
+        332,
+        330
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "SegmentCount",
+          "value": 6,
+          "address": "42a664"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 3072,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1024,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 140,
+          "address": "42a64c"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 4,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 128,
+          "address": "42a694"
+        },
+        {
+          "setting": "FlyingEnemyPlantsGrid",
+          "value": 1,
+          "address": "47ace0"
+        },
+        {
+          "setting": "FlyingEnemyTracking",
+          "value": 2,
+          "address": "47ace4"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        []
+      ],
+      "commands": [
+        2148007936,
+        2133917697,
+        2133917697,
+        2133917697,
+        2133917697,
+        2132803712,
+        2164260864,
+        2133917697,
+        3211265,
+        2147614720,
+        2133983281,
+        2133983281,
+        2132803712,
+        2164260864,
+        2399272960,
+        2133983233
+      ]
+    },
+    {
+      "address": "42c574",
+      "caption": "ARCHIVE OF PAIN",
+      "sources": [
+        326,
+        324
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 6,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1280,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1280,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 160,
+          "address": "42a64c"
+        },
+        {
+          "setting": "SegmentCount",
+          "value": 6,
+          "address": "42a664"
+        },
+        {
+          "setting": "HeadAttackParameters",
+          "value": 1048577,
+          "address": "42a668"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1280,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1280,
+            "address": "42a670"
+          }
+        ],
+        [
+          {
+            "setting": "HeadSpeedX",
+            "value": 1280,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1280,
+            "address": "42a670"
+          }
+        ],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1536,
+            "address": "42a670"
+          }
+        ],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 2,
+            "address": "42a650"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2131820834,
+        2131820835,
+        2130772002,
+        2130772003,
+        2164260864,
+        2131820835,
+        2131820834,
+        2130772002,
+        2130772003,
+        2147614720,
+        2131886354,
+        2131886355,
+        2130837522,
+        2130837523,
+        2164260864,
+        2131886355,
+        2131886354,
+        2130837522,
+        2130837523,
+        2147614720,
+        2131951890,
+        2131951891,
+        2130903058,
+        2130903059,
+        2164260864,
+        2399404032,
+        2132017427
+      ]
+    },
+    {
+      "address": "42add0",
+      "caption": "PINK AND LONG",
+      "sources": [
+        318,
+        316
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 7,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 2560,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1536,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 2,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 64,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 100,
+          "address": "42a64c"
+        },
+        {
+          "setting": "HeadAttackParameters",
+          "value": 262147,
+          "address": "42a668"
+        },
+        {
+          "setting": "RetargetInterval",
+          "value": 10,
+          "address": "42a690"
+        },
+        {
+          "setting": "RetargetTurnStep",
+          "value": 128,
+          "address": "42a694"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 7,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1360,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 3,
+            "address": "42a688"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 10,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1536,
+            "address": "42a66c"
+          }
+        ],
+        [
+          {
+            "setting": "SegmentCount",
+            "value": 16,
+            "address": "42a664"
+          },
+          {
+            "setting": "HeadSpeedX",
+            "value": 1792,
+            "address": "42a66c"
+          },
+          {
+            "setting": "HeadSpeedY",
+            "value": 1792,
+            "address": "42a670"
+          },
+          {
+            "setting": "HistorySpacing",
+            "value": 2,
+            "address": "42a688"
+          }
+        ]
+      ],
+      "commands": [
+        2147745792,
+        2136014864,
+        2136014881,
+        2164260864,
+        2136014880,
+        5308433,
+        2147745792,
+        2134966512,
+        2134966497,
+        2164260864,
+        2134966496,
+        4260081,
+        2147745792,
+        2133917712,
+        2133917729,
+        2164260864,
+        2133917728,
+        3211281,
+        2147745792,
+        2133917936,
+        2133917921,
+        2164260864,
+        2133917920,
+        3211505,
+        2147745792,
+        2130903090,
+        2130903091,
+        2164260864,
+        2399404032,
+        2130968819
+      ]
+    },
+    {
+      "address": "42cfd8",
+      "caption": "LOVE SHEEPIE PLUSHOPHILIA",
+      "sources": [
+        322,
+        320
+      ],
+      "settings": [
+        {
+          "setting": "HeadHealth",
+          "value": 4294967295,
+          "address": "42a650"
+        },
+        {
+          "setting": "SegmentHealth",
+          "value": 4294967295,
+          "address": "42a654"
+        },
+        {
+          "setting": "SegmentCount",
+          "value": 8,
+          "address": "42a664"
+        },
+        {
+          "setting": "AdvancePerTick",
+          "value": 48,
+          "address": "42a65c"
+        },
+        {
+          "setting": "FormationAllowance",
+          "value": 4,
+          "address": "42a660"
+        },
+        {
+          "setting": "HeadSpeedX",
+          "value": 1536,
+          "address": "42a66c"
+        },
+        {
+          "setting": "HeadSpeedY",
+          "value": 1536,
+          "address": "42a670"
+        },
+        {
+          "setting": "HistorySpacing",
+          "value": 4,
+          "address": "42a688"
+        },
+        {
+          "setting": "WorldAnchorSpeedX",
+          "value": 262144,
+          "address": "42a674"
+        },
+        {
+          "setting": "WorldAnchorSpeedY",
+          "value": 196608,
+          "address": "42a678"
+        },
+        {
+          "setting": "WorldAnchorDepthStep",
+          "value": 96,
+          "address": "42a67c"
+        },
+        {
+          "setting": "BeamReach",
+          "value": 140,
+          "address": "42a64c"
+        },
+        {
+          "setting": "FlyingEnemyTracking",
+          "value": 2,
+          "address": "47ace4"
+        },
+        {
+          "setting": "FlyingEnemyPlantsGrid",
+          "value": 1,
+          "address": "47ace0"
+        }
+      ],
+      "patterns": [
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 0,
+            "address": "42a650"
+          }
+        ],
+        [],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 1,
+            "address": "42a650"
+          }
+        ],
+        [
+          {
+            "setting": "HeadHealth",
+            "value": 2,
+            "address": "42a650"
+          }
+        ]
+      ],
+      "commands": [
+        2147614720,
+        2130772000,
+        2130772192,
+        2164260864,
+        2130772000,
+        2130772192,
+        2147614720,
+        2132869152,
+        2132869344,
+        2164260864,
+        2132869152,
+        2132869344,
+        2147745792,
+        2130837569,
+        2130837697,
+        2164260864,
+        2130837568,
+        2130837697,
+        2147614720,
+        2132869152,
+        2132869344,
+        2164260864,
+        2132869152,
+        2132869344,
+        2147876864,
+        2130903136,
+        2130903201,
+        2164260864,
+        2130968673,
+        2130968736,
+        2147614720,
+        2132869152,
+        2132869344,
+        2164260864,
+        2399404032,
+        2132869152
+      ]
+    }
+  ]
+}

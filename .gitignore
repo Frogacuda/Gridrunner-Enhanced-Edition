@@ -1,0 +1,17 @@
+build*/
+*.log
+*.candidate.txt
+*.tmp
+__pycache__/
+package/
+android/.gradle/
+android/.gradle-user/
+android/.cxx/
+android/local/
+android/local.properties
+
+*.jks
+*.keystore
+*.p12
+*.pfx
+*signing*.json
