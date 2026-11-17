@@ -41,6 +41,7 @@ struct StageSpec {
 // This is the game's own small data-script mechanism (0040c125/0040c27e),
 // not a CPU interpreter. Addresses are replaced with indices into typed data.
 class SpawnProgram {
+    friend struct ReplayState;
   public:
     explicit SpawnProgram(const std::vector<uint32_t> &commands) : commands_(commands) {}
     std::optional<uint32_t> next();

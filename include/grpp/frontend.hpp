@@ -1,6 +1,7 @@
 #pragma once
 #include "grpp/frontend_data.hpp"
 #include "grpp/game.hpp"
+#include "grpp/replay.hpp"
 #include <filesystem>
 namespace grpp {
 // Menu rectangles use source left/top/right/bottom coordinates, strict edges.
@@ -25,7 +26,12 @@ enum class FrontendView {
     Playing,
     HighScores,
     Farewell,
-    Campaign
+    Campaign,
+    ReplayPrompt,
+    ReplaySlots,
+    ReplayOverwrite,
+    ReplayBrowse,
+    ReplayWatching
 };
 struct FrontendInput {
     LogicalInput pointer;
@@ -41,27 +47,43 @@ class Frontend {
     Frontend(Assets &, std::filesystem::path saveFile);
     void step(const FrontendInput &);
     void editionMenu(bool enabled);
+    void enableReplays(bool enabled) {
+        replaysEnabled_ = enabled;
+        if (!enabled)
+            replay_.discard();
+    }
+    const ReplayRecording &replay() const { return replay_; }
+    std::filesystem::path replayPath(unsigned slot) const;
+
     bool arseEdition() const { return aofActive_; }
     void setNativeRate(bool enabled, int substeps = 3) { game_.setNativeRate(enabled, substeps); }
     void deferPresentation(bool enabled) { game_.deferPresentation(enabled); }
     void preparePresentation(bool referenceBackground = true, bool actors = true) {
-        if (view_ == FrontendView::Playing)
-            game_.renderNative(referenceBackground, actors);
+        if (view_ == FrontendView::Playing || watchingReplay())
+            activeGame().renderNative(referenceBackground, actors);
     }
-    const Canvas &canvas() const { return game_.canvas_; }
-    const Game &game() const { return game_; }
-    Canvas expandedCanvas() { return game_.expandedCanvas(); }
+    const Canvas &canvas() const { return game().canvas(); }
+    const Game &game() const { return replayGame_ ? *replayGame_ : game_; }
+    bool watchingReplay() const { return view_ == FrontendView::ReplayWatching; }
+    Canvas expandedCanvas() { return activeGame().expandedCanvas(); }
     FrontendView view() const { return view_; }
     const Scores &scores() const { return scores_; }
     const std::vector<std::array<int, 4>> &menuBounds() const { return bounds_; }
-    const std::vector<int> &sounds() const { return game_.sounds_; }
+    const std::vector<int> &sounds() const { return game().sounds(); }
     bool audioResetRequested() const { return audioReset_; }
-    unsigned assetRevision() const { return game_.assetRevision_; }
+    unsigned assetRevision() const { return game_.assetRevision_ + playbackAssetRevision_; }
     bool quitRequested() const { return quit_; }
     const std::string &saveError() const { return saveError_; }
     void flush();
     void close();
+    bool requestQuit();
     void cancelInput() {
+        try {
+            replay_.resetInput();
+        } catch (...) {
+            replay_.discard();
+            saveError_ = "Replay unavailable";
+        }
         game_.cancelPendingInput();
         pressed_ = -1;
         previousPointerHeld_ = false;
@@ -76,6 +98,13 @@ class Frontend {
     void startGameplay(bool resume, bool endurance = false);
     void switchEdition();
     void finishGameplay();
+    void endReplay(bool completed);
+    void dismissReplay();
+    void saveReplaySlot(unsigned slot);
+    void loadReplaySlots();
+    void watchReplaySlot(unsigned);
+    void stopWatchingReplay();
+    Game &activeGame() { return replayGame_ ? *replayGame_ : game_; }
     void levelChange(int);
     void editName(int);
     const std::string &playerName() const;
@@ -98,5 +127,13 @@ class Frontend {
         nameLetter_ = 0, nameCursor_ = 0, rank_ = 10;
     bool previousPointerHeld_ = false, quit_ = false, dirty_ = false, audioReset_ = false;
     std::string saveError_;
+    ReplayRecording replay_;
+    ReplayPlayback playback_;
+    std::unique_ptr<Game> replayGame_;
+    unsigned playbackAssetRevision_ = 0, playbackClock_ = 0;
+    bool replaysEnabled_ = false, replayStartPending_ = false;
+    std::array<std::string, 10> replaySlotLabels_{};
+    unsigned replaySlot_ = 0;
+    bool quitAfterReplay_ = false;
 };
 } // namespace grpp

@@ -19,7 +19,7 @@ BEGIN
    VALUE "InternalName", "grpp_enhanced\0"
    VALUE "OriginalFilename", "grpp_enhanced.exe\0"
    VALUE "ProductName", "Gridrunner++ Enhanced\0"
-   VALUE "ProductVersion", "@PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@\0"
+   VALUE "ProductVersion", "@PROJECT_VERSION@\0"
   END
  END
  BLOCK "VarFileInfo"

@@ -108,3 +108,18 @@ rates, so fractional updates do not trap companions outside the world or duplica
 contact budgets. Display changes must not change gameplay bounds, source decisions,
 random order or draw-owned effects. Tests distinguish captured-original fixtures,
 source-rule assertions and saved-port/image regression checks.
+
+## Replay ownership
+
+Frontend records resolved input immediately before each native gameplay tick.
+ReplayRecording holds the typed starting state and input stream until a slot is
+confirmed. ReplayPlayback decodes the same stream incrementally; regression checks use
+this decoder too. A separate Game owns playback
+state with profile writes disabled. Host pause stops the replay clock, while
+rendering options only change presentation. The frontend restores the selected
+edition's assets and audio when returning to the replay browser.
+
+ReplayState traverses explicit fields in replay_fields.inc. The format excludes
+pointers, padding and platform object layouts, and stores fixed-width scalar bit
+patterns. Schema or incompatible simulation changes require a rules identifier
+change. See REPLAYS.md for event encoding, limits and storage behavior.

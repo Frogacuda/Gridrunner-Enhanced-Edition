@@ -13,6 +13,7 @@ struct CombatState {
 // owns gates and traversal. Player input, world hazards and spawning are
 // separate components participating in that same source-ordered traversal.
 class CombatSystem {
+    friend struct ReplayState;
   public:
     CombatSystem(EntityPool &pool, PlayerState &player, GameRandom &random,
                  FormationSystem &formations, CombatState &state, WorldGrid &grid,

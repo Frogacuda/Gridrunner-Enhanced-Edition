@@ -1,7 +1,4 @@
 #include "audio.hpp"
-#ifdef GRPP_APPLE_ANGLE
-#include "apple_angle.hpp"
-#endif
 #include "gles_renderer.hpp"
 #include "grpp/background.hpp"
 #include "grpp/clock.hpp"
@@ -46,8 +43,8 @@ struct Options {
     std::filesystem::path assets, capture, saveDirectory;
     bool arse = false, endurance = false;
     int view = -1, windowWidth = 720, windowHeight = 960, presentationHz = 0;
-    bool hidden = false, startPaused = false, noSave = false, audio = true, reference = false,
-         help = false;
+    bool windowed = false, hidden = false, startPaused = false, noSave = false, audio = true,
+         reference = false, help = false;
     int frames = 0;
     SessionMode mode = SessionMode::Frontend;
 #ifdef GRPP_APP_CHECKS
@@ -94,6 +91,8 @@ Options options(int argc, char **argv) {
 #ifdef GRPP_APP_CHECKS
 #include "../tests/app_checks/parse.inc"
 #endif
+        else if (arg == "--windowed")
+            o.windowed = true;
         else if (arg == "--save-dir")
             o.saveDirectory = value();
         else if (arg == "--no-save")
@@ -150,6 +149,7 @@ struct Session {
     SDL_Gamepad *pad = nullptr;
     SDL_FingerID activeFinger = 0;
     bool touching = false;
+    bool suppressMenuRelease = false;
     bool bombHeld = false;
     TouchActions touchActions;
     bool blockSouth = false;
@@ -162,8 +162,9 @@ struct Session {
     int fieldWidth() const { return activeCanvas().width(); }
     int fieldHeight() const { return activeCanvas().height(); }
     bool playing() const {
-        return mode == SessionMode::DirectPlay || (mode == SessionMode::Frontend && frontend &&
-                                                   frontend->view() == FrontendView::Playing);
+        return mode == SessionMode::DirectPlay ||
+               (mode == SessionMode::Frontend && frontend &&
+                (frontend->view() == FrontendView::Playing || frontend->watchingReplay()));
     }
     void draw() {
         const bool referenceBackground = reference,
@@ -186,9 +187,10 @@ struct Session {
             Canvas overlay;
             pauseMenu.draw(overlay);
             canvas.centeredUi(overlay);
-        } else if (hasTouch && settings.touchEnabled(pad || SDL_HasKeyboard() || SDL_HasMouse()) &&
+        } else if (hasTouch && settings.touchEnabled() &&
                    (mode == SessionMode::DirectPlay ||
-                    (mode == SessionMode::Frontend && frontend->view() == FrontendView::Playing))) {
+                    (mode == SessionMode::Frontend &&
+                     (frontend->view() == FrontendView::Playing || frontend->watchingReplay())))) {
             const auto first = canvas.draws().size();
             TileMap button(canvas.width(), canvas.height());
             button.text("PAUSE", canvas.width() / 8 - 6, 0, 66);
@@ -203,9 +205,10 @@ float axis(SDL_Gamepad *pad, SDL_GamepadAxis axis) {
 }
 int run(const Options &opt) {
     if (opt.help) {
-        std::puts("Gridrunner++ Enhanced 1.0\n"
+        std::puts("Gridrunner++ Enhanced 1.1.0\n"
                   "--assets PATH       Asset directory\n"
                   "--save-dir PATH     Save/settings directory\n"
+                  "--windowed          Recover in a window\n"
                   "--no-audio          Disable sound\n"
                   "--reference         Original graphics\n"
                   "--letterbox         Preserve the original viewport\n"
@@ -223,10 +226,9 @@ int run(const Options &opt) {
     if (opt.editionTest)
         SDL_SetHint(SDL_HINT_AUDIO_DRIVER, "dummy");
 #endif
-#ifdef GRPP_APPLE_ANGLE
-    prepareAppleAngle();
-#endif
-    SDL_SetAppMetadata("Gridrunner++ Enhanced", "0.18.0", "org.llamasoft.grpp.enhanced");
+    // Finger input is handled directly; do not also synthesize mouse clicks.
+    SDL_SetHint(SDL_HINT_TOUCH_MOUSE_EVENTS, "0");
+    SDL_SetAppMetadata("Gridrunner++ Enhanced", "1.1.0", "org.llamasoft.grpp.enhanced");
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | (opt.audio ? SDL_INIT_AUDIO : 0)))
         throw std::runtime_error(SDL_GetError());
     AppLifecycle lifecycle;
@@ -250,8 +252,20 @@ int run(const Options &opt) {
         }
         saveFile = directory / "hst.txt";
     }
-    auto secondaryInputAvailable = [&]() { return s.pad || SDL_HasKeyboard() || SDL_HasMouse(); };
-    auto touchEnabled = [&]() { return s.settings.touchEnabled(secondaryInputAvailable()); };
+#ifdef GRPP_APP_CHECKS
+    bool secondaryInputDetectedForTest = true;
+#endif
+    auto secondaryInputAvailable = [&]() {
+#ifdef GRPP_APP_CHECKS
+        if (opt.touchOffTest && !secondaryInputDetectedForTest)
+            return false;
+#endif
+        return s.pad || SDL_HasKeyboard() || SDL_HasMouse();
+    };
+    auto touchEnabled = [&]() { return s.settings.touchEnabled(); };
+    auto mouseInputAllowed = [&](SDL_MouseID id) {
+        return id != SDL_TOUCH_MOUSEID && (id != SDL_PEN_MOUSEID || touchEnabled());
+    };
     auto touchControl = [&]() { return s.settings.control == 4 ? 1 : s.settings.control; };
     auto directTouchAvailable = [&]() {
 #ifdef GRPP_APP_CHECKS
@@ -265,7 +279,7 @@ int run(const Options &opt) {
             direct |= SDL_GetTouchDeviceType(devices[n]) == SDL_TOUCH_DEVICE_DIRECT;
         SDL_free(devices);
 #ifdef GRPP_APP_CHECKS
-        direct = direct || opt.pauseTest || opt.touchTest || opt.viewTest;
+        direct = direct || opt.pauseTest || opt.touchTest || opt.viewTest || opt.touchOffTest;
 #endif
         return direct;
     };
@@ -276,6 +290,7 @@ int run(const Options &opt) {
     s.game.endurance(opt.endurance);
     s.game.stageBackgrounds(true);
     s.frontend->setNativeRate(true, 6);
+    s.frontend->enableReplays(!opt.noSave);
     s.game.setNativeRate(true, 6);
     s.frontend->deferPresentation(true);
     s.game.deferPresentation(true);
@@ -283,6 +298,16 @@ int run(const Options &opt) {
         saveFile.empty() ? std::filesystem::path{} : saveFile.parent_path() / "options.txt";
     if (!optionsFile.empty())
         s.settings.load(optionsFile);
+    auto displayPendingFile = optionsFile;
+    if (!displayPendingFile.empty())
+        displayPendingFile += ".display-pending";
+    const bool interruptedDisplay =
+        !displayPendingFile.empty() && std::filesystem::exists(displayPendingFile);
+    if (DisplaySelectionAvailable && (opt.windowed || interruptedDisplay)) {
+        s.settings.display = DisplayMode::Windowed;
+        s.settings.save(optionsFile);
+        SDL_Log("Display recovery: starting windowed");
+    }
     if (opt.view >= 0)
         s.settings.expanded = opt.view != 0;
     if (opt.presentationHz)
@@ -293,9 +318,6 @@ int run(const Options &opt) {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
-#ifdef GRPP_APPLE_ANGLE
-    configureAppleAngle();
-#endif
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 0);
     SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 0);
@@ -367,8 +389,9 @@ int run(const Options &opt) {
     DecorativeCamera decorativeCamera;
     auto measureDecoration = [&]() {
         const double fraction = cadence.fraction(SDL_GetTicksNS());
-        const bool menu =
-            s.mode == SessionMode::Frontend && s.frontend->view() != FrontendView::Playing;
+        const bool menu = s.mode == SessionMode::Frontend &&
+                          s.frontend->view() != FrontendView::Playing &&
+                          !s.frontend->watchingReplay();
         decorativeOffset =
             (menu ? double((menuPhase + steps - 1) % steps) + fraction : fraction) / steps;
         decorativeCameraFraction = menu ? decorativeOffset : fraction;
@@ -379,7 +402,8 @@ int run(const Options &opt) {
     };
 
     auto togglePause = [&]() {
-        if (s.mode == SessionMode::Frontend && s.frontend->view() != FrontendView::Playing)
+        if (s.mode == SessionMode::Frontend && s.frontend->view() != FrontendView::Playing &&
+            !s.frontend->watchingReplay())
             return;
         freezeDecoration();
         s.paused = !s.paused;
@@ -398,8 +422,7 @@ int run(const Options &opt) {
         if (s.paused) {
             s.pauseMenu.open();
             s.pauseMenu.animate();
-            s.pauseMenu.rebuild(s.settings, s.hasTouch, DisplaySelectionAvailable,
-                                secondaryInputAvailable());
+            s.pauseMenu.rebuild(s.settings, s.hasTouch, DisplaySelectionAvailable);
             pauseCadence.reset(SDL_GetTicksNS());
             pointerActive = false;
         }
@@ -408,34 +431,104 @@ int run(const Options &opt) {
     };
     int windowX = 0, windowY = 0, windowW = 720, windowH = 960;
     SDL_GetWindowPosition(window, &windowX, &windowY);
+#ifdef GRPP_APP_CHECKS
+    bool rejectNextDisplay = false;
+#endif
+    bool displayChangePending = interruptedDisplay;
+    auto clearDisplayPending = [&]() {
+        if (!displayPendingFile.empty()) {
+            std::error_code error;
+            std::filesystem::remove(displayPendingFile, error);
+        }
+        displayChangePending = false;
+    };
     auto applyDisplay = [&](DisplayMode desired) {
         desired = platformDisplay(desired);
+        if (!DisplaySelectionAvailable) {
+            s.settings.display = DisplayMode::Borderless;
+            full = true;
+            return SDL_SetWindowFullscreenMode(window, nullptr) &&
+                   SDL_SetWindowFullscreen(window, true);
+        }
         const auto old = s.settings.display;
         if (old == DisplayMode::Windowed) {
             SDL_GetWindowPosition(window, &windowX, &windowY);
             SDL_GetWindowSize(window, &windowW, &windowH);
         }
+        if (DisplaySelectionAvailable && desired != DisplayMode::Windowed) {
+            displayChangePending = true;
+            if (!displayPendingFile.empty()) {
+                std::ofstream pending(displayPendingFile);
+                pending << int(desired) << '\n';
+            }
+        }
         auto apply = [&](DisplayMode mode) {
-            if (mode == DisplayMode::Windowed)
-                return SDL_SetWindowFullscreen(window, false) &&
-                       SDL_SetWindowBordered(window, true) &&
-                       SDL_SetWindowSize(window, windowW, windowH) &&
-                       SDL_SetWindowPosition(window, windowX, windowY);
-            const auto *desktop = SDL_GetDesktopDisplayMode(SDL_GetDisplayForWindow(window));
-            if (mode == DisplayMode::Fullscreen && !desktop)
+#ifdef GRPP_APP_CHECKS
+            if (rejectNextDisplay && mode != DisplayMode::Windowed) {
+                rejectNextDisplay = false;
+                SDL_SetError("Simulated driver rejection");
                 return false;
-            return SDL_SetWindowFullscreenMode(window, mode == DisplayMode::Fullscreen ? desktop
-                                                                                       : nullptr) &&
-                   SDL_SetWindowFullscreen(window, true);
+            }
+#endif
+            // Complete the previous transition before changing its mode or geometry.
+            // Windows can otherwise leave an exclusive window minimized/unfocused.
+            SDL_SetWindowRelativeMouseMode(window, false);
+            const auto display = SDL_GetDisplayForWindow(window);
+            SDL_DisplayMode current{};
+            if (mode == DisplayMode::Fullscreen) {
+                const auto *available = SDL_GetCurrentDisplayMode(display);
+                if (!available)
+                    return false;
+                current = *available;
+            }
+            if (!SDL_SetWindowFullscreen(window, false) || !SDL_SyncWindow(window))
+                return false;
+            if (!opt.hidden) {
+                SDL_ShowWindow(window);
+                SDL_RestoreWindow(window);
+                SDL_SyncWindow(window);
+                SDL_RaiseWindow(window);
+            }
+            bool applied;
+            if (mode == DisplayMode::Windowed)
+                applied = SDL_SetWindowFullscreenMode(window, nullptr) &&
+                          SDL_SetWindowBordered(window, true) &&
+                          SDL_SetWindowSize(window, windowW, windowH) &&
+                          SDL_SetWindowPosition(window, windowX, windowY);
+            else
+                applied = SDL_SetWindowFullscreenMode(
+                              window, mode == DisplayMode::Fullscreen ? &current : nullptr) &&
+                          SDL_SetWindowFullscreen(window, true);
+            if (!applied || !SDL_SyncWindow(window))
+                return false;
+            if (!opt.hidden) {
+                if (SDL_GetWindowFlags(window) & SDL_WINDOW_MINIMIZED)
+                    SDL_RestoreWindow(window);
+                SDL_ShowWindow(window);
+                SDL_RaiseWindow(window);
+                SDL_SyncWindow(window);
+            }
+            if (!renderer.windowChanged())
+                return false;
+            const auto flags = SDL_GetWindowFlags(window);
+            return bool(flags & SDL_WINDOW_FULLSCREEN) == (mode != DisplayMode::Windowed) &&
+                   (opt.hidden || !(flags & (SDL_WINDOW_HIDDEN | SDL_WINDOW_MINIMIZED)));
         };
         if (!apply(desired)) {
-            apply(old);
-            s.pauseMenu.message = "Display change failed";
+            SDL_Log("Display transition failed: %s; recovering windowed", SDL_GetError());
+            apply(DisplayMode::Windowed);
+            s.settings.display = DisplayMode::Windowed;
+            full = false;
+            s.settings.save(optionsFile);
+            clearDisplayPending();
+            s.pauseMenu.message = "Display change failed - windowed";
             return false;
         }
         s.settings.display = desired;
         full = desired != DisplayMode::Windowed;
         nextRefreshCheck = 0;
+        cadence.reset(SDL_GetTicksNS());
+        cursorKnown = false;
         return true;
     };
     auto applyOrientation = [&]() {
@@ -449,13 +542,13 @@ int run(const Options &opt) {
         return true;
     };
     applyOrientation();
+    const auto startupDisplay = s.settings.display;
+    bool startupDisplayPending =
+        DisplaySelectionAvailable && startupDisplay != DisplayMode::Windowed;
     if (!DisplaySelectionAvailable)
         applyDisplay(DisplayMode::Borderless);
-    else if (s.settings.display != DisplayMode::Windowed) {
-        auto desired = s.settings.display;
+    else
         s.settings.display = DisplayMode::Windowed;
-        applyDisplay(desired);
-    }
     auto selectSession = [&](SessionMode value) {
         s.mode = value;
         if (value == SessionMode::DirectPlay) {
@@ -646,7 +739,20 @@ int run(const Options &opt) {
                 nextRefreshCheck = 0;
                 break;
             case SDL_EVENT_QUIT:
-                running = false;
+                if (s.mode == SessionMode::Frontend && !opt.noSave) {
+                    if (s.paused)
+                        togglePause();
+                    s.suppressMenuRelease = pointerHeld || s.touching;
+                    pointerHeld = false;
+                    s.bombHeld = false;
+                    s.touching = false;
+                    s.touchActions.reset();
+                    s.originStick.cancel();
+                    s.relativeTouch.cancel();
+                    s.latch.reset();
+                    running = !s.frontend->requestQuit();
+                } else
+                    running = false;
                 break;
             case SDL_EVENT_WINDOW_FOCUS_LOST:
             case SDL_EVENT_WILL_ENTER_BACKGROUND:
@@ -668,6 +774,8 @@ int run(const Options &opt) {
             case SDL_EVENT_DID_ENTER_FOREGROUND:
                 surfaceOrientationDirty = true;
                 focused = true;
+                if (DisplaySelectionAvailable)
+                    renderer.windowChanged();
                 cursorKnown = false;
                 mouseInside = SDL_GetMouseFocus() == window;
                 cadence.reset(SDL_GetTicksNS());
@@ -680,7 +788,7 @@ int run(const Options &opt) {
                 mouseInside = false;
                 break;
             case SDL_EVENT_MOUSE_MOTION:
-                if (event.motion.which != SDL_TOUCH_MOUSEID) {
+                if (mouseInputAllowed(event.motion.which)) {
                     mouseInside = true;
                     if (mouseCaptured)
                         relativeMouse(event.motion.xrel, event.motion.yrel);
@@ -689,8 +797,9 @@ int run(const Options &opt) {
                 }
                 break;
             case SDL_EVENT_MOUSE_BUTTON_DOWN:
-                if (event.button.which == SDL_TOUCH_MOUSEID)
+                if (!mouseInputAllowed(event.button.which))
                     break;
+                s.suppressMenuRelease = false;
                 mouseInside = true;
                 if (!mouseCaptured && !pointer(event.button.x, event.button.y, false) &&
                     (s.paused || !s.playing()))
@@ -715,6 +824,12 @@ int run(const Options &opt) {
                     pointerHeld = true;
                 break;
             case SDL_EVENT_MOUSE_BUTTON_UP:
+                if (!mouseInputAllowed(event.button.which))
+                    break;
+                if (s.suppressMenuRelease && event.button.button == SDL_BUTTON_LEFT) {
+                    s.suppressMenuRelease = false;
+                    break;
+                }
                 if (event.button.button == SDL_BUTTON_RIGHT)
                     s.bombHeld = false;
                 else {
@@ -808,7 +923,7 @@ int run(const Options &opt) {
                     menuInput.pointerReleased = inside;
                     break;
                 }
-                if (s.activeFinger == event.tfinger.fingerID) {
+                if (s.touching && s.activeFinger == event.tfinger.fingerID) {
                     s.originStick.cancel();
                     s.relativeTouch.cancel();
                     s.touching = false;
@@ -821,7 +936,9 @@ int run(const Options &opt) {
                 }
                 break;
             case SDL_EVENT_FINGER_CANCELED:
-                if (s.activeFinger == event.tfinger.fingerID) {
+                if (!touchEnabled())
+                    break;
+                if (s.touching && s.activeFinger == event.tfinger.fingerID) {
                     s.originStick.cancel();
                     s.relativeTouch.cancel();
                     s.touching = false;
@@ -1137,8 +1254,7 @@ int run(const Options &opt) {
                 s.settings.sensitivity = std::clamp(s.settings.sensitivity + direction, 5, 30);
             if (action > 0 && !s.settings.save(optionsFile))
                 s.pauseMenu.message = "Options save failed";
-            s.pauseMenu.rebuild(s.settings, s.hasTouch, DisplaySelectionAvailable,
-                                secondaryInputAvailable());
+            s.pauseMenu.rebuild(s.settings, s.hasTouch, DisplaySelectionAvailable);
         }
         syncSurfaceOrientation();
         captureMouse();
@@ -1211,16 +1327,31 @@ int run(const Options &opt) {
             s.touchActions.sampled();
             bool frontendAdvanced = false;
             if (s.mode == SessionMode::Frontend && running &&
-                (s.frontend->view() == FrontendView::Playing || menuPhase == 0)) {
+                (s.frontend->view() == FrontendView::Playing || s.frontend->watchingReplay() ||
+                 menuPhase == 0)) {
                 const auto revision = s.frontend->assetRevision();
                 const auto view = s.frontend->view();
+                const bool wasGameplay =
+                    view == FrontendView::Playing || s.frontend->watchingReplay();
                 const int previousWidth = s.fieldWidth(), previousHeight = s.fieldHeight();
                 menuInput.pointer = input;
                 menuInput.pointerActive = pointerActive;
                 s.frontend->step(menuInput);
                 frontendAdvanced = true;
+                if (wasGameplay && !s.playing()) {
+                    s.suppressMenuRelease = pointerHeld || s.touching;
+                    pointerHeld = false;
+                    s.bombHeld = false;
+                    s.touching = false;
+                    s.activeFinger = 0;
+                    s.touchActions.reset();
+                    s.originStick.cancel();
+                    s.relativeTouch.cancel();
+                    s.latch.reset();
+                    s.blockSouth = true;
+                }
                 menuInput = {};
-                if (view != FrontendView::Playing && s.frontend->view() == FrontendView::Playing) {
+                if (!wasGameplay && s.playing()) {
                     s.blockSouth = true;
                     s.bombHeld = false;
                     s.latch.reset();
@@ -1329,6 +1460,16 @@ int run(const Options &opt) {
         renderer.present(s.canvas, s.assets, s.reference, true, s.aspect, capture, decorativeOffset,
                          s.renderOrientation(), s.settings.expanded, s.playing(),
                          softwareCursor ? &desktopMouse : nullptr);
+        if (displayChangePending &&
+            (opt.hidden ||
+             ((SDL_GetWindowFlags(window) & SDL_WINDOW_INPUT_FOCUS) &&
+              !(SDL_GetWindowFlags(window) & (SDL_WINDOW_HIDDEN | SDL_WINDOW_MINIMIZED)))))
+            clearDisplayPending();
+        // Establish a visible, drawable window before restoring saved fullscreen.
+        if (startupDisplayPending) {
+            startupDisplayPending = false;
+            applyDisplay(startupDisplay);
+        }
         ++rendered;
     }
 #ifdef GRPP_APP_CHECKS

@@ -27,6 +27,7 @@ struct SpawnFrame {
 // Enemy movement, combat and session transitions are separate consumers of its
 // real entities; they are not replaced by provisional behavior here.
 class FormationSystem {
+    friend struct ReplayState;
   public:
     FormationSystem(EntityPool &pool, PlayerState &player, GameRandom &random)
         : pool_(pool), player_(player), random_(random) {}

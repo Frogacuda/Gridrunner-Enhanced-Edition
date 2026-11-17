@@ -530,3 +530,172 @@ if (opt.inputBurstTest && rendered >= 8 && !burstInjected && s.game.player().tra
         SDL_PushEvent(&e);
     }
 }
+
+if (opt.touchOffTest && touchOffScript != rendered) {
+    touchOffScript = rendered;
+    auto finger = [&](Uint32 type) {
+        SDL_Event e{};
+        e.type = type;
+        e.tfinger.touchID = 1;
+        e.tfinger.fingerID = 123;
+        e.tfinger.x = .9f;
+        e.tfinger.y = .1f;
+        SDL_PushEvent(&e);
+    };
+    auto mouse = [&](Uint32 type, SDL_MouseID id) {
+        int w = 0, h = 0;
+        SDL_GetWindowSize(window, &w, &h);
+        SDL_Event e{};
+        e.type = type;
+        if (type == SDL_EVENT_MOUSE_MOTION) {
+            e.motion.which = id;
+            e.motion.x = w * (id == 77 ? .2f : .9f);
+            e.motion.y = h * (id == 77 ? .8f : .1f);
+            e.motion.xrel = 7;
+            e.motion.yrel = 3;
+        } else {
+            e.button.which = id;
+            e.button.button = SDL_BUTTON_LEFT;
+            e.button.x = w * .9f;
+            e.button.y = h * .1f;
+        }
+        SDL_PushEvent(&e);
+    };
+    auto key = [&](SDL_Keycode k) {
+        SDL_Event e{};
+        e.type = SDL_EVENT_KEY_DOWN;
+        e.key.key = k;
+        SDL_PushEvent(&e);
+    };
+    if (rendered == 3) {
+        if (!secondaryInputAvailable())
+            throw std::runtime_error("Touch Off test requires mouse/keyboard/controller");
+        s.settings.control = 4;
+        touchOffX = s.pointerX;
+        touchOffY = s.pointerY;
+    }
+    if (rendered == 5)
+        finger(SDL_EVENT_FINGER_DOWN);
+    if (rendered == 6)
+        finger(SDL_EVENT_FINGER_MOTION);
+    if (rendered == 7)
+        finger(SDL_EVENT_FINGER_UP);
+    if (rendered == 8)
+        finger(SDL_EVENT_FINGER_CANCELED);
+    if (rendered == 10)
+        mouse(SDL_EVENT_MOUSE_MOTION, SDL_TOUCH_MOUSEID);
+    if (rendered == 11)
+        mouse(SDL_EVENT_MOUSE_BUTTON_DOWN, SDL_TOUCH_MOUSEID);
+    if (rendered == 12 || rendered == 16)
+        mouse(SDL_EVENT_MOUSE_BUTTON_UP, SDL_TOUCH_MOUSEID);
+    if (rendered == 14) {
+        secondaryInputDetectedForTest = false;
+        finger(SDL_EVENT_FINGER_DOWN);
+    }
+    if (rendered == 15)
+        finger(SDL_EVENT_FINGER_MOTION);
+    if (rendered == 20)
+        secondaryInputDetectedForTest = true;
+    if (rendered == 17)
+        mouse(SDL_EVENT_MOUSE_MOTION, SDL_PEN_MOUSEID);
+    if (rendered == 18)
+        mouse(SDL_EVENT_MOUSE_BUTTON_DOWN, SDL_PEN_MOUSEID);
+    if (rendered == 19)
+        mouse(SDL_EVENT_MOUSE_BUTTON_UP, SDL_PEN_MOUSEID);
+    if (rendered >= 4 && rendered <= 20 &&
+        (s.pointerX != touchOffX || s.pointerY != touchOffY || s.touching || pointerHeld ||
+         s.bombHeld))
+        throw std::runtime_error(
+            "Touch Off: finger or synthesized tap changed gameplay input at frame " +
+            std::to_string(rendered));
+    if (rendered == 22)
+        key(SDLK_P);
+    if (rendered == 24) {
+        if (!s.paused)
+            throw std::runtime_error("Touch Off: keyboard pause failed");
+        finger(SDL_EVENT_FINGER_DOWN);
+        finger(SDL_EVENT_FINGER_UP);
+        SDL_Event e{};
+        e.type = SDL_EVENT_MOUSE_BUTTON_UP;
+        e.button.which = SDL_TOUCH_MOUSEID;
+        e.button.button = SDL_BUTTON_LEFT;
+        int w = 0, h = 0;
+        SDL_GetWindowSize(window, &w, &h);
+        e.button.x = w * .5f;
+        e.button.y = h * .24f;
+        SDL_PushEvent(&e);
+    }
+    if (rendered == 27) {
+        if (!s.paused)
+            throw std::runtime_error("Touch Off: tap activated pause menu");
+        key(SDLK_P);
+    }
+    if (rendered == 30) {
+        if (s.paused)
+            throw std::runtime_error("Touch Off: keyboard resume failed");
+        s.settings.control = 1;
+        finger(SDL_EVENT_FINGER_DOWN);
+    }
+    if (rendered == 32) {
+        if (s.pointerX == touchOffX && s.pointerY == touchOffY)
+            throw std::runtime_error("Touch Off: re-enabled touch failed");
+        finger(SDL_EVENT_FINGER_UP);
+    }
+    if (rendered == 35) {
+        s.settings.control = 4;
+        touchOffX = s.pointerX;
+        touchOffY = s.pointerY;
+        mouse(SDL_EVENT_MOUSE_MOTION, 77);
+    }
+    if (rendered == 37 && s.pointerX == touchOffX && s.pointerY == touchOffY)
+        throw std::runtime_error("Touch Off suppressed real mouse input");
+    if (rendered == 40 || rendered == 44) {
+        SDL_Event e{};
+        e.type = rendered == 40 ? SDL_EVENT_MOUSE_BUTTON_DOWN : SDL_EVENT_MOUSE_BUTTON_UP;
+        e.button.which = 77;
+        e.button.button = SDL_BUTTON_RIGHT;
+        e.button.x = 20;
+        e.button.y = 20;
+        SDL_PushEvent(&e);
+    }
+    if (rendered == 42) {
+        if (!s.bombHeld)
+            throw std::runtime_error("Real mouse bomb was blocked");
+        finger(SDL_EVENT_FINGER_CANCELED);
+    }
+    if (rendered == 43 && !s.bombHeld)
+        throw std::runtime_error("Disabled touch cancelled real mouse input");
+    if (rendered == 45 && s.bombHeld)
+        throw std::runtime_error("Real mouse release was blocked");
+}
+
+if (opt.replayWatchTest && watchScript != rendered) {
+    watchScript = rendered;
+    focused = true;
+    SDL_Keycode key = 0;
+    if (rendered == 5 || rendered == 18) key = SDLK_ESCAPE;
+    if (rendered == 8 || rendered == 11) { selectPauseAction(1); key = SDLK_RETURN; }
+    if (rendered == 13) { selectPauseAction(7); key = SDLK_RETURN; }
+    if (rendered == 15) { selectPauseAction(4); key = SDLK_RETURN; }
+    if (rendered == 6) {
+        if (!s.paused) throw std::runtime_error("Replay did not pause");
+        pausedWatchState = ReplayState::capture(const_cast<Game &>(s.frontend->game()));
+    }
+    if (rendered >= 6 && rendered <= 18 &&
+        ReplayState::capture(const_cast<Game &>(s.frontend->game())) != pausedWatchState)
+        throw std::runtime_error("Paused replay advanced or graphical options altered it");
+    if (rendered == 10 && !s.reference) throw std::runtime_error("Replay Original toggle failed");
+    if (rendered == 12 && s.reference) throw std::runtime_error("Replay Enhanced toggle failed");
+    if (rendered == 17 && s.settings.orientation != 1)
+        throw std::runtime_error("Replay orientation toggle failed");
+    if (rendered == 19 && s.paused) throw std::runtime_error("Replay did not resume");
+    if (rendered == 22) key = SDLK_SPACE; // Gameplay controls must be ignored.
+    if (rendered == 23) key = SDLK_TAB;
+    if (rendered == 25) key = SDLK_P;
+    if (rendered == 27) { selectPauseAction(6); key = SDLK_RETURN; }
+    if (rendered == 28 && (s.paused || s.frontend->view() != FrontendView::ReplayBrowse))
+        throw std::runtime_error("Replay pause Exit did not return to list");
+    if (key) {
+        SDL_Event e{}; e.type = SDL_EVENT_KEY_DOWN; e.key.key = key; SDL_PushEvent(&e);
+    }
+}

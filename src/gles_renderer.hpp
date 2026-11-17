@@ -27,6 +27,7 @@ class GlesRenderer {
     void directResolve(bool enabled) { directResolve_ = enabled; }
     void frameQueue(unsigned limit);
     bool frameReady();
+    bool windowChanged();
     void screenshot(const std::filesystem::path &path);
     const Viewport &viewport() const { return viewport_; }
     const std::string &driver() const { return driver_; }

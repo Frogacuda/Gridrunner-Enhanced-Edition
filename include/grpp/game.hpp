@@ -7,6 +7,7 @@ namespace grpp {
 class Frontend;
 enum class GamePhase { Playing, StageClear, GameOver };
 class Game {
+    friend struct ReplayState;
   public:
     explicit Game(Assets &assets);
     Game(const Game &) = delete;

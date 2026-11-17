@@ -6,7 +6,7 @@
 
 namespace grpp {
 enum class DisplayMode { Windowed, Borderless, Fullscreen };
-#if defined(__ANDROID__) || defined(GRPP_APPLE_IOS)
+#ifdef __ANDROID__
 inline constexpr bool DisplaySelectionAvailable = false;
 #else
 inline constexpr bool DisplaySelectionAvailable = true;
@@ -34,8 +34,10 @@ struct PlayerOptions {
     DisplayMode display = platformDisplay(DisplayMode::Windowed);
     int control = 1;
     int sensitivity = 10; // Tenths; absolute touch ignores this gain.
-    bool touchEnabled(bool secondaryInput) const { return control != 4 || !secondaryInput; }
-    int touchControlCount(bool secondaryInput) const { return secondaryInput ? 4 : 3; }
+    bool touchEnabled() const { return control != 4; }
+    int touchControlCount(bool secondaryInput) const {
+        return secondaryInput || control == 4 ? 4 : 3;
+    }
     float gain() const { return sensitivity / 10.f; }
     bool original = false;
     bool expanded = true;
@@ -209,7 +211,7 @@ class PauseMenu {
         advanceTextPalette(palette_, phase_);
     }
     void rebuild(const PlayerOptions &o, bool touchAvailable = true,
-                 bool displayAvailable = DisplaySelectionAvailable, bool secondaryInput = true) {
+                 bool displayAvailable = DisplaySelectionAvailable) {
         const int selectedAction = actions_.empty() ? 0 : actions_[size_t(selected_)];
         map_.clear();
         MenuSpec spec{
@@ -230,8 +232,7 @@ class PauseMenu {
             std::string("Display: ") + modes[int(o.display)],
             std::string("Orientation: ") + rotations[o.orientation],
             o.expanded ? "View: Draw to Edge" : "View: Letterbox",
-            std::string("Touch control: ") +
-                (o.control == 4 ? (secondaryInput ? "Off" : "1") : std::to_string(o.control)),
+            std::string("Touch control: ") + (o.control == 4 ? "Off" : std::to_string(o.control)),
             "Control Sensitivity: < " + std::to_string(o.sensitivity / 10) + "." +
                 std::to_string(o.sensitivity % 10) + "x >",
             "Exit"};

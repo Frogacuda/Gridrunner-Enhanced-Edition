@@ -299,9 +299,10 @@ int main(int argc, char **argv) {
               "Controller B routing failed");
         PlayerOptions off;
         off.control = 4;
-        check(!off.touchEnabled(true) && off.touchEnabled(false) &&
-                  off.touchControlCount(true) == 4 && off.touchControlCount(false) == 3,
-              "Touch Off availability or safe fallback failed");
+        check(!off.touchEnabled() && off.touchControlCount(true) == 4 &&
+                  off.touchControlCount(false) == 4 && PlayerOptions{}.touchEnabled() &&
+                  PlayerOptions{}.touchControlCount(false) == 3,
+              "Touch Off must remain disabled without a secondary input");
         PlayerOptions settings;
         PauseMenu menu;
         menu.open();

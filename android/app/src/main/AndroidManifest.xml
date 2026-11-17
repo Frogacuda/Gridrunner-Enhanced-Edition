@@ -7,7 +7,7 @@
         android:allowBackup="true" android:appCategory="game" android:hardwareAccelerated="true"
         android:enableOnBackInvokedCallback="false"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        <activity android:name=".GridrunnerActivity" android:exported="true"
+        <activity android:name="org.openminotaur.gridrunnerplusplus.GridrunnerActivity" android:exported="true"
             android:screenOrientation="fullUser" android:launchMode="singleTask"
             android:configChanges="layoutDirection|locale|grammaticalGender|fontScale|fontWeightAdjustment|orientation|uiMode|screenLayout|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation">
             <intent-filter>

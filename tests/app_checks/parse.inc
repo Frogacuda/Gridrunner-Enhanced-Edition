@@ -69,3 +69,32 @@ else if (arg == "--edition-test") {
     o.mode = SessionMode::Frontend;
     o.frames = 90;
 }
+
+else if (arg == "--touch-off-test") {
+    o.touchOffTest = true;
+    o.hidden = true;
+    o.noSave = true;
+    o.audio = false;
+    o.mode = SessionMode::DirectPlay;
+    o.frames = 60;
+    o.presentationHz = 60;
+}
+
+else if (arg == "--replay-watch-test") {
+    o.replayWatchTest = true;
+    o.hidden = true;
+    o.audio = false;
+    o.frames = 35;
+    o.mode = SessionMode::Frontend;
+    o.saveDirectory = (std::filesystem::temp_directory_path() /
+        ("grpp-watch-check-" + std::to_string(SDL_GetPerformanceCounter()))).string();
+}
+
+else if (arg == "--display-test") {
+    o.displayTest = true;
+    o.hidden = true;
+    o.audio = false;
+    o.frames = 3;
+    o.saveDirectory = (std::filesystem::temp_directory_path() /
+        ("grpp-display-check-" + std::to_string(SDL_GetPerformanceCounter()))).string();
+}

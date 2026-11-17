@@ -1,4 +1,4 @@
-# Gridrunner++ Enhanced 1.0
+# Gridrunner++ Enhanced Edition 1.1.0
 
 A native Windows and Android edition of Llamasoft's Gridrunner++, including
 Arse on Fire and an independent Endurance mode. Enhanced graphics add glowing
@@ -15,6 +15,29 @@ No network or shared-storage permission is needed.
 Select Play, adjust the starting level with Left/Right, then press Down to select
 Start. Starting levels follow the active profile's progress. Standard and Arse on
 Fire have separate campaigns and records; Endurance can be selected at level one.
+
+## Replays
+
+Each run records automatically in memory. After Game Over or choosing Exit in the
+pause menu, Save Replay? offers Yes or No. Yes lets you choose one of ten slots
+for the current profile; occupied slots require confirmation before overwriting.
+No discards the recording. Nothing is written until you confirm a save slot.
+
+To watch a run, choose Save Slots/Replays, select a profile (including Guest), then
+Watch Saved Replays. Standard and Arse on Fire share the profile's ten slots.
+Playback supports the normal pause menu and graphical options. Live game controls
+cannot alter the recording, and watching does not change profiles or high scores.
+Pause menu Exit returns to the replay list; the list also returns when playback
+finishes. See [replay format and behavior](docs/REPLAYS.md).
+
+This release updates the existing application and retains its profiles, records
+and options. Windows uses the existing per-user save directory; Android updates
+the existing package when signed with the same release certificate.
+
+Windows display changes restore and focus the game window. An interrupted display
+change recovers windowed on the next launch. If needed, run Start-Windowed.cmd from
+the Windows download, or pass `--windowed`, to save a windowed display setting.
+Profiles and replay files are unaffected by display recovery.
 
 ## Controls
 
@@ -35,7 +58,7 @@ relative dragging, discarding excess movement at a playfield edge. Control 3 is 
 fixed-origin virtual stick: one quarter of the shorter screen dimension is full
 travel. Sensitivity ranges from 0.5x to 3.0x in 0.1 steps and affects relative
 touch, virtual stick, mouse and analog controller input. Absolute touch ignores it.
-Touch control appears only with direct touch hardware. A fourth option, Off, disables touch when a controller, keyboard or mouse is connected; touch falls back to Control 1 if those inputs are disconnected. The on-screen Pause button is hidden when touch is unavailable or disabled. B is unused in standard gameplay and in menus with an Exit choice.
+Touch control appears only with direct touch hardware. A fourth option, Off, disables touch. Once selected, Off stays disabled until changed, including when another input disconnects. The on-screen Pause button is hidden when touch is unavailable or disabled. B is unused in standard gameplay and in menus with an Exit choice.
 
 In Standard, a second touch uses the bomb. In Arse on Fire, hold a second finger
 for secondary fire; use a third finger or double-tap with the second for the bomb.
@@ -91,13 +114,6 @@ For core-only checks without SDL or a display, configure `GRPP_BUILD_APP=OFF`.
 For GPU rendering checks, configure `GRPP_RUN_RENDER_TESTS=ON` on a GLES 3 system.
 `cmake --build build --config Release --target check` builds and runs registered
 checks. See tests/README.md for fixture provenance and scope.
-
-### Experimental Apple configuration
-
-An optional [Apple CMake entry point](ports/apple/README.md) provides a macOS
-ANGLE/Metal experiment and an iOS native-GLES development configuration. These
-are separate from the validated Windows/Android release and require Apple hardware
-validation.
 
 ### Android
 

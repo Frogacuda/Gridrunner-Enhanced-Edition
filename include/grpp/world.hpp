@@ -8,6 +8,7 @@ struct WorldState {
     int laserTicks = 0, laserX = 0, laserY = 0;
 };
 class WorldSystem {
+    friend struct ReplayState;
   public:
     WorldSystem(EntityPool &pool, PlayerState &player, CombatState &combatState,
                 CombatSystem &combat, WorldGrid &grid, const FormationTuning &tuning,

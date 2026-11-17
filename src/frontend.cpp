@@ -15,9 +15,10 @@ std::vector<std::array<int, 4>> layoutMenu(TileMap &map, const MenuSpec &spec, i
         auto rect = spec.items[i].bounds;
         const char *label = i < labels.size() ? labels[i].c_str() : spec.items[i].label;
         if (label) {
+            const int color = spec.items[i].color >= 0 ? spec.items[i].color
+                                                       : spec.firstColor + int(i) * spec.colorStep;
             auto r = map.centeredText(label, spec.row + spec.gap + int(i) * spec.itemStep,
-                                      (uint32_t(spec.firstColor + int(i) * spec.colorStep) << 16) |
-                                          0xff00u);
+                                      (uint32_t(color) << 16) | 0xff00u);
             rect = {r.x - padding, r.y - padding, r.x + r.width, r.y + r.height + padding};
         }
         bounds.push_back(rect);
@@ -218,6 +219,19 @@ void Frontend::flush() {
         saveError_ = std::string("SAVE FAILED: ") + error.what();
     }
 }
+bool Frontend::requestQuit() {
+    if (replaysEnabled_ && replay_.pending()) {
+        quitAfterReplay_ = true;
+        return false;
+    }
+    if (replaysEnabled_ && replay_.active()) {
+        quitAfterReplay_ = true;
+        endReplay(game_.phase_ == GamePhase::GameOver);
+        return !replay_.pending();
+    }
+    quit_ = true;
+    return true;
+}
 void Frontend::close() {
     if (view_ == FrontendView::Playing)
         finishGameplay();
@@ -368,6 +382,36 @@ void Frontend::rebuild() {
     map_.clear();
     bounds_.clear();
     switch (view_) {
+    case FrontendView::ReplayPrompt:
+    case FrontendView::ReplayOverwrite: {
+        MenuSpec spec{view_ == FrontendView::ReplayPrompt ? "SAVE REPLAY?" : "OVERWRITE REPLAY?",
+                      10,
+                      78,
+                      6,
+                      66,
+                      2,
+                      5,
+                      {{"Yes", {}}, {"No", {}}}};
+        bounds_ = layoutMenu(map_, spec);
+        break;
+    }
+    case FrontendView::ReplaySlots:
+    case FrontendView::ReplayBrowse: {
+        MenuSpec spec{view_ == FrontendView::ReplayBrowse ? "WATCH: MAX STAGE / SCORE"
+                                                          : "SAVE: MAX STAGE / SCORE",
+                      7,
+                      78,
+                      3,
+                      66,
+                      0,
+                      2,
+                      {}};
+        std::vector<std::string> labels(replaySlotLabels_.begin(), replaySlotLabels_.end());
+        labels.push_back(view_ == FrontendView::ReplayBrowse ? "Exit" : "Cancel");
+        spec.items.resize(labels.size());
+        bounds_ = layoutMenu(map_, spec, 2, labels);
+        break;
+    }
     case FrontendView::Splash:
         map_.centeredText(original::titleTop, 1, 0x17f00);
         map_.centeredText(original::titleSub, 10, 0x17f00);
@@ -393,7 +437,7 @@ void Frontend::rebuild() {
                 {aofActive_ ? "Arse on Fire Special Edition" : "Gridrunner ++ (Standard)", {}},
                 {"Restart Best", {}},
                 {"Information", {}},
-                {"Slot Management", {}},
+                {"Save Slots/Replays", {}},
                 {"Exit", {}}};
             bounds_ = layoutMenu(map_, spec);
         } else
@@ -425,6 +469,12 @@ void Frontend::rebuild() {
         map_.centeredText(("PLAYER: " + playerName()).c_str(), 8, 0x42ff00);
         {
             auto spec = view_ == FrontendView::Slot ? original::slotMenu : original::clearMenu;
+            if (view_ == FrontendView::Slot && replaysEnabled_) {
+                // Adding an action must not move Exit into a different palette cycle.
+                spec.items.back().color = spec.firstColor + 4 * spec.colorStep;
+                spec.items.insert(spec.items.end() - 1,
+                                  {"Watch Saved Replays", {}, spec.firstColor});
+            }
             bounds_ = layoutMenu(map_, spec);
         }
         break;
@@ -576,6 +626,7 @@ void Frontend::switchEdition() {
     rebuild();
 }
 void Frontend::startGameplay(bool resume, bool endurance) {
+    replayStartPending_ = replaysEnabled_;
     auto &g = game_;
     auto &p = playerSlot();
     g.arse(aofActive_);
@@ -616,6 +667,85 @@ void Frontend::startGameplay(bool resume, bool endurance) {
     pressed_ = -1;
     previousPointerHeld_ = false;
 }
+std::filesystem::path Frontend::replayPath(unsigned slot) const {
+    if (slot >= 10)
+        throw std::out_of_range("Replay slot");
+    return saveFile_.parent_path() / "replays" /
+           ("profile-" +
+            std::to_string(replay_.pending()
+                               ? replay_.info().profile
+                               : unsigned(std::min<size_t>(scores_.selectedPlayer, 4)))) /
+           ("slot-" + std::to_string(slot + 1) + ".grr");
+}
+void Frontend::loadReplaySlots() {
+    for (unsigned n = 0; n < 10; ++n) {
+        replaySlotLabels_[n] = std::to_string(n + 1) + ": Empty";
+        std::error_code error;
+        if (std::filesystem::exists(replayPath(n), error)) {
+            try {
+                auto i = ReplayRecording::inspect(replayPath(n));
+                replaySlotLabels_[n] = std::to_string(n + 1) + ": " + (i.aof ? "AoF " : "Std ") +
+                                       std::to_string(i.maxStage) + " / " + std::to_string(i.score);
+            } catch (...) {
+                replaySlotLabels_[n] = std::to_string(n + 1) + ": Unreadable";
+            }
+        }
+    }
+}
+void Frontend::watchReplaySlot(unsigned slot) {
+    try {
+        auto candidate = std::make_unique<Game>(assets_);
+        playback_.load(*candidate, replayPath(slot));
+        candidate->renderNative();
+        replayGame_ = std::move(candidate);
+        playbackClock_ = 0;
+        ++playbackAssetRevision_;
+        audioReset_ = true;
+        saveError_.clear();
+        view_ = FrontendView::ReplayWatching;
+        bounds_.clear();
+        previousPointerHeld_ = false;
+    } catch (const std::exception &) {
+        assets_.arse(aofActive_);
+        assets_.load(assets_.root());
+        ++playbackAssetRevision_;
+        saveError_ = "Replay unavailable or damaged";
+    }
+}
+void Frontend::stopWatchingReplay() {
+    replayGame_.reset();
+    playback_ = {};
+    assets_.arse(aofActive_);
+    assets_.load(assets_.root());
+    ++playbackAssetRevision_;
+    audioReset_ = true;
+    loadReplaySlots();
+    enter(FrontendView::ReplayBrowse);
+}
+void Frontend::endReplay(bool completed) {
+    replayStartPending_ = false;
+    replay_.finish(game_.combatState_.score, completed);
+    finishGameplay();
+    if (replay_.pending())
+        enter(FrontendView::ReplayPrompt);
+}
+void Frontend::dismissReplay() {
+    replay_.discard();
+    if (quitAfterReplay_) {
+        quit_ = true;
+        return;
+    }
+    enter(FrontendView::HighScores);
+}
+void Frontend::saveReplaySlot(unsigned slot) {
+    try {
+        replay_.save(replayPath(slot));
+        saveError_.clear();
+        dismissReplay();
+    } catch (const std::exception &) {
+        saveError_ = "Replay save failed";
+    }
+}
 void Frontend::finishGameplay() {
     auto &p = playerSlot();
     p.bestLevel = std::max(p.bestLevel, game_.stage_);
@@ -631,6 +761,42 @@ void Frontend::finishGameplay() {
     flush();
 }
 void Frontend::activate(int item) {
+    if (view_ == FrontendView::ReplayBrowse) {
+        if (item == 10) {
+            saveError_.clear();
+            enter(FrontendView::Slot);
+        } else
+            watchReplaySlot(unsigned(item));
+        return;
+    }
+    if (view_ == FrontendView::ReplayPrompt) {
+        if (item == 0) {
+            loadReplaySlots();
+            enter(FrontendView::ReplaySlots);
+        } else
+            dismissReplay();
+        return;
+    }
+    if (view_ == FrontendView::ReplaySlots) {
+        if (item == 10) {
+            enter(FrontendView::ReplayPrompt);
+            return;
+        }
+        replaySlot_ = unsigned(item);
+        std::error_code error;
+        if (std::filesystem::exists(replayPath(replaySlot_), error))
+            enter(FrontendView::ReplayOverwrite);
+        else
+            saveReplaySlot(replaySlot_);
+        return;
+    }
+    if (view_ == FrontendView::ReplayOverwrite) {
+        if (item == 0)
+            saveReplaySlot(replaySlot_);
+        else
+            enter(FrontendView::ReplaySlots);
+        return;
+    }
     switch (view_) {
     case FrontendView::Splash:
         audioReset_ = true;
@@ -698,7 +864,7 @@ void Frontend::activate(int item) {
             scores_.selectedPlayer = 4;
             game_.player_.selectedPlayer = 4;
             dirty_ = true;
-            enter(FrontendView::Level);
+            enter(replaysEnabled_ ? FrontendView::Slot : FrontendView::Level);
         } else
             enter(FrontendView::Main);
         break;
@@ -711,7 +877,11 @@ void Frontend::activate(int item) {
             startGameplay(true);
         else if (item == 3)
             enter(FrontendView::Level);
-        else
+        else if (item == 4 && replaysEnabled_) {
+            saveError_.clear();
+            loadReplaySlots();
+            enter(FrontendView::ReplayBrowse);
+        } else
             enter(FrontendView::Main);
         break;
     case FrontendView::Clear:
@@ -751,6 +921,12 @@ void Frontend::activate(int item) {
         if (++page_ == int(pages_.size())) {
             game_.campaignNotice_ = false;
             view_ = FrontendView::Playing;
+            try {
+                replay_.checkpoint(game_);
+            } catch (const std::exception &) {
+                replay_.discard();
+                saveError_ = "Replay unavailable";
+            }
         } else
             rebuild();
         break;
@@ -828,17 +1004,71 @@ void Frontend::drawMenu(const FrontendInput &input) {
 void Frontend::step(const FrontendInput &input) {
     game_.sounds_.clear();
     audioReset_ = false;
+    if (watchingReplay()) {
+        const bool held = (input.pointer.held & 1u) != 0;
+        previousPointerHeld_ = held;
+        if (input.back) {
+            stopWatchingReplay();
+            drawMenu({});
+            return;
+        }
+        try {
+            auto &g = *replayGame_;
+            g.sounds_.clear();
+            // Host ticks at 200 Hz; 100 Hz recordings consume alternate ticks.
+            playbackClock_ += unsigned(g.nativeSubsteps());
+            if (playbackClock_ >= 6) {
+                playbackClock_ -= 6;
+                const auto revision = g.assetRevision();
+                const bool more = playback_.step(g);
+                if (revision != g.assetRevision())
+                    ++playbackAssetRevision_;
+                if (!more) {
+                    stopWatchingReplay();
+                    drawMenu({});
+                }
+            }
+        } catch (const std::exception &) {
+            stopWatchingReplay();
+            saveError_ = "Replay unavailable or damaged";
+            drawMenu({});
+        }
+        return;
+    }
     if (view_ == FrontendView::Playing) {
         const bool held = (input.pointer.held & 1u) != 0;
         const bool released = input.pointerReleased || (previousPointerHeld_ && !held);
         previousPointerHeld_ = held;
         if (input.back || (game_.phase_ == GamePhase::GameOver && (input.confirm || released))) {
-            finishGameplay();
+            if (replaysEnabled_)
+                endReplay(game_.phase_ == GamePhase::GameOver);
+            else
+                finishGameplay();
             return;
         }
         const auto previous = game_.stagesCleared_;
         const bool sourceTick = !game_.nativeRate() || game_.nativePhase() == 0;
+        if (replayStartPending_) {
+            replayStartPending_ = false;
+            try {
+                replay_.begin(game_, unsigned(std::min<size_t>(scores_.selectedPlayer, 4)));
+            } catch (const std::exception &) {
+                replay_.discard();
+                saveError_ = "Replay unavailable";
+            }
+        }
+        try {
+            replay_.append(input.pointer);
+        } catch (const std::exception &) {
+            replay_.discard();
+            saveError_ = "Replay recording full";
+        }
         game_.step(input.pointer);
+        replay_.reachedStage(game_.stage());
+        if (replaysEnabled_ && game_.phase_ == GamePhase::GameOver) {
+            endReplay(true);
+            return;
+        }
         if (previous != game_.stagesCleared_) {
             dirty_ = true;
             flush();
@@ -852,7 +1082,20 @@ void Frontend::step(const FrontendInput &input) {
         return;
     }
     if (input.back) {
-        if (view_ == FrontendView::Splash || view_ == FrontendView::Main)
+        if (view_ == FrontendView::Campaign && replay_.active()) {
+            endReplay(false);
+            return;
+        }
+        if (view_ == FrontendView::ReplayBrowse) {
+            saveError_.clear();
+            enter(FrontendView::Slot);
+        } else if (view_ == FrontendView::ReplayPrompt)
+            dismissReplay();
+        else if (view_ == FrontendView::ReplaySlots)
+            enter(FrontendView::ReplayPrompt);
+        else if (view_ == FrontendView::ReplayOverwrite)
+            enter(FrontendView::ReplaySlots);
+        else if (view_ == FrontendView::Splash || view_ == FrontendView::Main)
             enter(FrontendView::Farewell);
         else if (view_ == FrontendView::Reader)
             enter(FrontendView::About);
@@ -906,7 +1149,7 @@ void Frontend::step(const FrontendInput &input) {
         else if (release && pressed_ >= 0)
             activate(pressed_);
     }
-    if (view_ != FrontendView::Playing)
+    if (view_ != FrontendView::Playing && !watchingReplay())
         drawMenu(input);
 }
 } // namespace grpp

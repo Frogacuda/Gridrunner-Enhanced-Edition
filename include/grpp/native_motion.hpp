@@ -7,6 +7,7 @@ namespace grpp {
 // Forces/decisions remain on the recovered 30 ms clock. Three or six actual moves,
 // with integer remainders, conserve their full source displacement exactly.
 class NativeMotion {
+    friend struct ReplayState;
   public:
     static constexpr int Substeps = 3;
     explicit NativeMotion(int steps = Substeps) : steps_(steps) {

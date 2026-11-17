@@ -4,6 +4,7 @@ namespace grpp {
 struct MenuItem {
     const char *label;
     std::array<int, 4> bounds;
+    int color = -1;
 };
 struct MenuSpec {
     const char *title;
