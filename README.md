@@ -1,4 +1,6 @@
-# Gridrunner++ Enhanced 1.0
+# Gridrunner++ Enhanced 1.1
+
+Update v1.1: Saving and playing replays now supported.
 
 This project updates and modernizes Llamasoft's Gridrunner++, originally
 developed for PocketPC and Windows computers. It was created by decompiling
@@ -43,11 +45,14 @@ Touch Control 1 maps the touch position directly to a target. Control 2 uses
 relative dragging, discarding excess movement at a playfield edge. Control 3 is a
 fixed-origin virtual stick: one quarter of the shorter screen dimension is full
 travel. Sensitivity ranges from 0.5x to 3.0x in 0.1 steps and affects relative
-touch, virtual stick, mouse and analog controller input. Absolute touch ignores it.
-Touch control appears only with direct touch hardware. A fourth option, Off, disables touch when a controller, keyboard or mouse is connected; touch falls back to Control 1 if those inputs are disconnected. The on-screen Pause button is hidden when touch is unavailable or disabled. B is unused in standard gameplay and in menus with an Exit choice.
-
-In Standard, a second touch uses the bomb. In Arse on Fire, hold a second finger
-for secondary fire; use a third finger or double-tap with the second for the bomb.
+touch, virtual stick, mouse and analog controller input. Absolute touch ignores 
+it. Touch control appears only with direct touch hardware. A fourth option, Off, 
+disables touch when a controller, keyboard or mouse is connected; touch falls back 
+to Control 1 if those inputs are disconnected. The on-screen Pause button is 
+hidden when touch is unavailable or disabled. B is unused in standard gameplay and 
+in menus with an Exit choice. In Standard, a second touch uses the bomb. In Arse on
+Fire, hold a second finger for secondary fire; use a third finger or double-tap with 
+the second for the sheepiezapper.
 
 ## Display and defaults
 
@@ -69,6 +74,13 @@ Profiles, records and options are stored in the per-user application directory,
 not beside the executable. Android app updates retain data when signed with the
 same certificate. Removing an app can remove its local data. `--save-dir PATH`
 selects another desktop save location; `--help` lists command-line options.
+
+## Replays
+
+Gridrunner++ EE supports replays as of v1.1. Replay recording is passive and 
+automatic. Upon game over or exit you will be prompted whether or not you want
+to save a replay, and they can be assigned to up to 10 slots per profile. Files
+are saved locally and individually and can be copied or shared. 
 
 ## Credits and rights
 
