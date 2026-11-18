@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(GridrunnerPlusPlusEnhanced VERSION 1.1.0 LANGUAGES C CXX)
+project(GridrunnerPlusPlusEnhanced VERSION 1.2.0 LANGUAGES C CXX)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 if(ANDROID)
     set_property(GLOBAL PROPERTY JOB_POOLS grpp_compile=4)

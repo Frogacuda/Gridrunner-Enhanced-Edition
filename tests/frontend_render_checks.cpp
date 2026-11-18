@@ -91,6 +91,7 @@ int main(int argc, char **argv) {
             };
             step();
             capture("splash");
+            const Canvas splash = f.canvas();
             click(0);
             capture("main");
             renderer.present(f.canvas(), assets, true, true, Aspect::Fit,
@@ -113,6 +114,69 @@ int main(int argc, char **argv) {
                 require(bool(in), "Incomplete orientation image");
                 return RgbImage{w, h, std::move(data)};
             };
+            for (const auto size : {std::array<int, 2>{1280, 720}, {720, 1600}}) {
+                require(SDL_SetWindowSize(window, size[0], size[1]), SDL_GetError());
+                SDL_PumpEvents();
+                const auto path = output / ("splash-edge-" + std::to_string(size[0]) + ".ppm");
+                renderer.present(splash, assets, false, true, Aspect::Fit, path, 0, 0, true, false);
+                const auto pixels = rgbImage(path);
+                std::array<bool, 256> levels{};
+                for (int y = 0; y < pixels.h / 2; ++y)
+                    levels[pixels.pixels[(size_t(y) * pixels.w + 2) * 3 + 2]] = true;
+                int shades = 0;
+                for (bool used : levels)
+                    shades += used;
+                require(shades > 80, "Enhanced intro still uses quantized RGB565 gradient");
+                if (size[1] > size[0])
+                    require(pixels.pixels[2 * 3 + 2] > 150,
+                            "Portrait gradient did not continue brightening into overscan");
+
+                const auto originalPath =
+                    output / ("splash-edge-original-" + std::to_string(size[0]) + ".ppm");
+                renderer.present(splash, assets, true, false, Aspect::Fit, originalPath, 0, 0, true,
+                                 false);
+                const auto originalSplash = rgbImage(originalPath);
+                auto blue = [&](int x, int y) {
+                    return originalSplash.pixels[(size_t(y) * originalSplash.w + x) * 3 + 2];
+                };
+                const auto view = makeViewport(originalSplash.w, originalSplash.h, Aspect::Fit,
+                                               splash.width(), splash.height());
+                const auto edge = blue(view.x + 2, view.y);
+                require(edge > 100 && blue(2, 0) == edge &&
+                            blue(2, originalSplash.h - 1) == edge,
+                        "Original splash padding does not match its edge blue");
+                if (view.x > 0)
+                    require(blue(2, view.height / 3) == blue(view.x + 2, view.height / 3) &&
+                                blue(2, view.height / 3) < edge,
+                            "Original splash gradient did not extend horizontally");
+                if (view.y > 0)
+                    require(blue(2, view.y - 1) == edge &&
+                                blue(2, view.y + view.height) == edge,
+                            "Original splash portrait padding has a visible seam");
+            }
+            require(SDL_SetWindowSize(window, 720, 960), SDL_GetError());
+            SDL_PumpEvents();
+            Canvas fullAnnouncement, clippedAnnouncement;
+            fullAnnouncement.sprite(assets, 256, 120, 160);
+            PlayerState clipPlayer;
+            GameRandom clipRandom(1);
+            EffectRandom clipEffects(1);
+            SourceVisuals clipVisual(clippedAnnouncement, assets, clipPlayer, clipRandom,
+                                     clipEffects);
+            clipVisual.sprite(256, 20, 160);
+            const auto fullPath = output / "got-you-full.ppm",
+                       clippedPath = output / "got-you-clipped.ppm";
+            renderer.present(fullAnnouncement, assets, false, true, Aspect::Fit, fullPath);
+            renderer.present(clippedAnnouncement, assets, false, true, Aspect::Fit, clippedPath);
+            const auto fullPixels = rgbImage(fullPath), clippedPixels = rgbImage(clippedPath);
+            for (int y = 457; y < 503; ++y)
+                for (int x = 5; x < 280; ++x)
+                    for (int c = 0; c < 3; ++c)
+                        require(
+                            std::abs(int(clippedPixels.pixels[(size_t(y) * 720 + x) * 3 + c]) -
+                                     int(fullPixels.pixels[(size_t(y) * 720 + x + 300) * 3 + c])) <=
+                                2,
+                            "Clipping stretches the high-resolution announcement UVs");
             auto original = rgbImage(output / "main-reference.ppm");
             for (int y = 0; y < original.h; ++y)
                 for (int x = 0; x < original.w; ++x)

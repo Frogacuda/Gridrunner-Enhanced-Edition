@@ -138,6 +138,7 @@ void SourceVisuals::sprite(int id, int x, int y, uint16_t foreground) {
     if (w > 0 && h > 0) {
         canvas_.image(s.sheet, {sx, sy, w, h}, float(left), float(top), float(w), float(h),
                       {true, foreground, 0});
+        canvas_.identifySpriteLast(id);
         canvas_.subpixelLast(spriteOffsetX_, spriteOffsetY_);
     }
 }
@@ -293,6 +294,7 @@ void SourceVisuals::transformed(Entity &e, bool world, bool fixed) {
             h = std::min(h, (canvas_.height() - 1) - dy);
             if (w > 0 && h > 0) {
                 canvas_.image(s.sheet, {sx, sy, w, h}, float(dx), float(dy), float(w), float(h));
+                canvas_.identifySpriteLast(e.sprite);
                 canvas_.markFragment();
                 const int px = world ? sub32(e.x, player_.worldX) : e.x,
                           py = world ? sub32(e.y, player_.worldY) : e.y;

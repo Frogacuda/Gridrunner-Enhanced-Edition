@@ -214,7 +214,8 @@ void drawPreciseBackground(Canvas &canvas, const DecorativeGrid &grid, double fr
         pattern(canvas, p.color, p.x, p.y, p.spacing, p.rx, p.ry, p.shades, p.mode, p.energy,
                 grid.width, grid.height, compact);
 }
-void drawPreciseStars(Canvas &canvas, const DecorativeStars &field, double frameOffset) {
+void drawPreciseStars(Canvas &canvas, const DecorativeStars &field, double frameOffset, double left,
+                      double top, double right, double bottom) {
     if (!std::isfinite(frameOffset) || frameOffset < 0 || frameOffset > 1)
         throw std::invalid_argument("Invalid star phase");
     constexpr double period = 16777216.;
@@ -225,7 +226,7 @@ void drawPreciseStars(Canvas &canvas, const DecorativeStars &field, double frame
             depth += period;
         depth += 1.;
         const double x = double(star[0]) / depth + 120., y = double(star[1]) / depth + 160.;
-        if (x > 0 && x < 240 && y > 0 && y < 320)
+        if (x > left && x < right && y > top && y < bottom)
             canvas.beam(float(x + .5), float(y + .5), float(x + .5), float(y + .5), 0xffff, 1.f,
                         1.f);
     }

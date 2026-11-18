@@ -87,6 +87,25 @@ int main(int argc, char **argv) {
         check(loaded.cap == 120 && !loaded.expanded && loaded.orientation == 2,
               "Invalid view option changed settings");
         PauseMenu menu;
+        // A star outside the source viewport must appear in the matching overscan
+        // without changing its projection, speed or the stars inside the viewport.
+        for (const auto size : {std::array<int, 2>{1280, 720}, {720, 1600}}) {
+            Canvas sky;
+            DecorativeStars stars;
+            stars.valid = true;
+            stars.stars.fill({0, 0, 1048575});
+            stars.stars[0] = size[0] > size[1] ? std::array<int32_t, 3>{-220 * 1048576, 0, 1048575}
+                                               : std::array<int32_t, 3>{0, -200 * 1048576, 1048575};
+            stars.first = stars.last = 0;
+            sky.starField(stars);
+            const auto wide = expandedPresentation(sky, size[0], size[1], Aspect::Fit, 0, 0, false);
+            const auto view = makeViewport(size[0], size[1], Aspect::Fit, 240, 320);
+            bool outside = false;
+            for (const auto &d : wide.draws())
+                outside |= d.sheet == -3 && (d.x < view.x || d.x >= view.x + view.width ||
+                                             d.y < view.y || d.y >= view.y + view.height);
+            check(outside, "Draw to Edge stars remain clipped to source viewport");
+        }
         menu.open();
         menu.rebuild(options, false);
         FrontendInput i;

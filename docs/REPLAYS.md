@@ -1,8 +1,10 @@
 # Replays
 
 The game records the newest run automatically. Recording begins at the
-first gameplay tick, with a typed starting-state snapshot. On Game Over or the
-pause menu's Exit action, Save Replay? offers Yes/No. Yes opens ten slots for the
+first gameplay tick, with a typed starting-state snapshot. Recording stops when
+the run reaches Game Over, but the original Game Over screen remains visible.
+Dismissing that screen, or choosing the pause menu's Exit action during a run,
+opens Save Replay? with Yes/No. Yes opens ten slots for the
 active profile; occupied slots show mode, highest stage reached and final score.
 Occupied slots require overwrite confirmation. Cancel returns to
 the prompt. No discards the in-memory recording. Window close also offers the

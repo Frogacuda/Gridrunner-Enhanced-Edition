@@ -222,6 +222,8 @@ void Frontend::flush() {
 bool Frontend::requestQuit() {
     if (replaysEnabled_ && replay_.pending()) {
         quitAfterReplay_ = true;
+        if (view_ == FrontendView::Playing)
+            endReplay(game_.phase_ == GamePhase::GameOver);
         return false;
     }
     if (replaysEnabled_ && replay_.active()) {
@@ -950,6 +952,7 @@ void Frontend::drawMenu(const FrontendInput &input) {
     if (view_ == FrontendView::Level)
         advanceTextPalette(g.textPalette_, g.colorPhase_); // selector's second 004167ce call
     if (view_ == FrontendView::Splash) {
+        const auto first = g.canvas_.draws().size();
         int gradient = 0x7f00;
         for (int y = 0; y < 160; ++y) {
             const auto c = packOriginalColor(uint32_t((gradient >> 8) << 8));
@@ -957,6 +960,7 @@ void Frontend::drawMenu(const FrontendInput &input) {
             g.canvas_.line(0, 319 - y, 240, 1, c);
             gradient -= 203;
         }
+        g.canvas_.smoothIntroSince(first);
     }
     drawMenuStars(g.canvas_, stars_, g.frame_);
     if (view_ == FrontendView::Campaign)
@@ -964,8 +968,10 @@ void Frontend::drawMenu(const FrontendInput &input) {
     else if (view_ == FrontendView::Splash)
         g.canvas_.sprite(assets_, 0, 120, 160, {false, 0, 0});
     else if (view_ != FrontendView::Reader && view_ != FrontendView::Level &&
-             view_ != FrontendView::Name && view_ != FrontendView::Campaign)
+             view_ != FrontendView::Name && view_ != FrontendView::Campaign) {
         g.canvas_.sprite(assets_, 1, 120, (assets_.sprite(1).height >> 1) + 10);
+        g.canvas_.markTitleLogo();
+    }
     if (view_ == FrontendView::Level) {
         const ChainFrame frame{pixel(g.player_.worldX) + 16,
                                pixel(g.player_.worldX) + 224,
@@ -975,11 +981,18 @@ void Frontend::drawMenu(const FrontendInput &input) {
                                g.frame_};
         g.hud(visual, frame);
     }
+    const auto firstText = g.canvas_.draws().size();
     map_.draw(g.canvas_, g.textPalette_);
+    if (editionMenu_ && !aofActive_ && view_ == FrontendView::Main)
+        g.canvas_.markTitleCreditSince(firstText, 48);
     if (view_ == FrontendView::Level || view_ == FrontendView::Name) {
         int y = view_ == FrontendView::Level ? 152 : 200;
         visual.sprite(2, 32, y);
+        if (view_ == FrontendView::Level)
+            g.canvas_.markLevelSelectArrow();
         visual.sprite(3, 208, y);
+        if (view_ == FrontendView::Level)
+            g.canvas_.markLevelSelectArrow();
     }
     if (view_ == FrontendView::Name) {
         const int bounce = std::abs(int(uint32_t(mul32(g.frame_, 64)) & 511u) - 255) - 128;
@@ -989,7 +1002,10 @@ void Frontend::drawMenu(const FrontendInput &input) {
     }
     int hover =
         input.pointerActive ? menuHit(bounds_, input.pointer.x, input.pointer.y) : selected_;
-    if (hover >= 0 && view_ != FrontendView::Splash && view_ != FrontendView::HighScores) {
+    const bool hasChoices = view_ != FrontendView::Splash && view_ != FrontendView::HighScores &&
+                            view_ != FrontendView::Farewell && view_ != FrontendView::Reader &&
+                            view_ != FrontendView::Campaign;
+    if (hover >= 0 && hasChoices) {
         const auto &r = bounds_[size_t(hover)];
         auto color = packOriginalColor(g.textPalette_[64]);
         g.canvas_.selection(r, color);
@@ -1065,10 +1081,10 @@ void Frontend::step(const FrontendInput &input) {
         }
         game_.step(input.pointer);
         replay_.reachedStage(game_.stage());
-        if (replaysEnabled_ && game_.phase_ == GamePhase::GameOver) {
-            endReplay(true);
-            return;
-        }
+        // Keep the source Game Over presentation until the player dismisses it.
+        // Its idle animation is not part of the recorded run.
+        if (replaysEnabled_ && replay_.active() && game_.phase_ == GamePhase::GameOver)
+            replay_.finish(game_.combatState_.score, true);
         if (previous != game_.stagesCleared_) {
             dirty_ = true;
             flush();

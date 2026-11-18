@@ -1,4 +1,13 @@
-# Gridrunner++ Enhanced Edition 1.1.0
+# Gridrunner++ Enhanced Edition 1.2.0
+
+- Enhanced adds high-resolution artwork for the Llamasoft splash, both title
+  screens, the Cippy level selectors, and the Got You!, Level Up!, and Sheepie
+  Save! announcements. The title artwork stays aligned when switching editions.
+- Draw to Edge extends the splash backdrop and menu stars in both renderers.
+  Original mode repeats the edge blue above and below the splash in portrait.
+- Game Over stays on screen until dismissed before the replay-save prompt.
+  Informational screens have no selection border.
+- Menus and the HUD use the original pixel font.
 
 A native Windows and Android edition of Llamasoft's Gridrunner++, including
 Arse on Fire and an independent Endurance mode. Enhanced graphics add glowing
@@ -18,8 +27,8 @@ Fire have separate campaigns and records; Endurance can be selected at level one
 
 ## Replays
 
-Each run records automatically in memory. After Game Over or choosing Exit in the
-pause menu, Save Replay? offers Yes or No. Yes lets you choose one of ten slots
+Each run records automatically in memory. After dismissing the Game Over screen
+or choosing Exit in the pause menu, Save Replay? offers Yes or No. Yes lets you choose one of ten slots
 for the current profile; occupied slots require confirmation before overwriting.
 No discards the recording. Nothing is written until you confirm a save slot.
 

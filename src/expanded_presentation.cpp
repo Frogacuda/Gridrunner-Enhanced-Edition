@@ -51,7 +51,20 @@ Canvas expandedPresentation(const Canvas &source, int width, int height, Aspect 
         for (const auto &d : background.draws())
             map(d, 0, 0);
     }
-    for (const auto &d : source.draws()) {
+    const auto &stars = source.starField();
+    const auto extendStars = [&]() {
+        Canvas extendedStars;
+        drawPreciseStars(extendedStars, stars, frameOffset, -v.x / sx, -v.y / sy,
+                         (width - v.x) / sx, (height - v.y) / sy);
+        for (const auto &star : extendedStars.draws())
+            map(star, float(v.x), float(v.y));
+    };
+    for (size_t i = 0; i < source.draws().size(); ++i) {
+        if (stars.valid && i == stars.first)
+            extendStars();
+        if (stars.valid && i >= stars.first && i < stars.last)
+            continue;
+        const auto &d = source.draws()[i];
         if (d.referenceOnly || d.decorative)
             continue;
         float x = float(v.x), y = float(v.y);
@@ -68,6 +81,8 @@ Canvas expandedPresentation(const Canvas &source, int width, int height, Aspect 
             y = float(height - v.height);
         map(d, x, y);
     }
+    if (stars.valid && stars.first == source.draws().size())
+        extendStars();
     if (boundaries && source.playfield().valid) {
         // Green at 40% -> cyan at 70% -> green, over two seconds.
         const float pulse = float((1 - std::cos(seconds * 3.141592653589793)) * .5);

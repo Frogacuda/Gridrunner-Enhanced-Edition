@@ -52,6 +52,10 @@ class GlesRenderer {
     unsigned rotationTexture_ = 0, rotationFramebuffer_ = 0;
     int rotationWidth_ = 0, rotationHeight_ = 0;
     std::array<unsigned, 10> textures_{};
+    enum Artwork { StandardTitle, AofTitle, Splash, GotYou, LevelUp, SheepieSave, LevelArrow,
+                   ArtworkCount, NoArtwork = -1 };
+    std::array<unsigned, ArtworkCount> artworkTextures_{};
+    std::array<std::array<int, 2>, ArtworkCount> artworkSizes_{};
     int foreground_ = -1, background_ = -1, mode_ = -1, uvBounds_ = -1;
     Raster565 raster_;
     std::vector<Rgba> referencePixels_;

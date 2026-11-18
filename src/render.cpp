@@ -97,6 +97,7 @@ void Canvas::sprite(const Assets &assets, size_t index, int cx, int cy, Paint pa
     const auto &r = assets.sprite(index);
     image(r.sheet, {r.x, r.y, r.width, r.height}, float(cx - (r.width >> 1)),
           float(cy - (r.height >> 1)), float(r.width), float(r.height), paint);
+    identifySpriteLast(int(index));
 }
 void Canvas::image(int sheet, Rect source, float x, float y, float width, float height, Paint paint,
                    float angle) {

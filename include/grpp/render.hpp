@@ -35,6 +35,9 @@ struct Draw {
     bool referenceGeometry = false;
     float opacity = 1;
     HudAnchor hudAnchor = HudAnchor::None;
+    bool introGradient = false, smoothIntro = false, titleLogo = false, legacyTitleCredit = false;
+    bool levelSelectArrow = false;
+    int spriteId = -1; // Presentation replacements retain source UVs, including fragments.
 };
 // Only the noninteractive procedural background is eligible for resampling.
 struct DecorativeGrid {
@@ -85,6 +88,21 @@ class Canvas {
     void beam(float ax, float ay, float bx, float by, uint16_t color, float energy = 1,
               float width = 1, bool patterned = false);
     void referenceOnlySince(size_t first);
+    void smoothIntroSince(size_t first) {
+        referenceOnlySince(first);
+        for (size_t i = first; i < draws_.size(); ++i)
+            draws_[i].introGradient = true;
+        draws_.at(first).referenceOnly = false;
+        draws_.at(first).smoothIntro = true;
+    }
+    void markTitleLogo() { draws_.back().titleLogo = true; }
+    void markLevelSelectArrow() { draws_.back().levelSelectArrow = true; }
+    void identifySpriteLast(int id) { draws_.back().spriteId = id; }
+    void markTitleCreditSince(size_t first, float y) {
+        for (size_t i = first; i < draws_.size(); ++i)
+            if (draws_[i].y == y)
+                draws_[i].legacyTitleCredit = true;
+    }
     void coalescePatternDotsSince(size_t first);
     void markFragment() {
         if (!draws_.empty())

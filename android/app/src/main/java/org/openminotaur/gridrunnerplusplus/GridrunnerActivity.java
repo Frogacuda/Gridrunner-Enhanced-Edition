@@ -50,7 +50,7 @@ public final class GridrunnerActivity extends SDLActivity {
     @Override protected String[] getArguments() {
         try {
             // std::ifstream reads ordinary files; assets remain private to this app.
-            File directory = new File(getFilesDir(), "game-assets-12");
+            File directory = new File(getFilesDir(), "game-assets-15");
             File complete = new File(directory, ".complete");
             if (!complete.isFile()) {
                 if (!directory.isDirectory() && !directory.mkdirs()) throw new IOException("Asset directory");

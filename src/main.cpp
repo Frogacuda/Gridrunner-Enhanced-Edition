@@ -205,7 +205,7 @@ float axis(SDL_Gamepad *pad, SDL_GamepadAxis axis) {
 }
 int run(const Options &opt) {
     if (opt.help) {
-        std::puts("Gridrunner++ Enhanced 1.1.0\n"
+        std::puts("Gridrunner++ Enhanced 1.2.0\n"
                   "--assets PATH       Asset directory\n"
                   "--save-dir PATH     Save/settings directory\n"
                   "--windowed          Recover in a window\n"
@@ -228,7 +228,7 @@ int run(const Options &opt) {
 #endif
     // Finger input is handled directly; do not also synthesize mouse clicks.
     SDL_SetHint(SDL_HINT_TOUCH_MOUSE_EVENTS, "0");
-    SDL_SetAppMetadata("Gridrunner++ Enhanced", "1.1.0", "org.llamasoft.grpp.enhanced");
+    SDL_SetAppMetadata("Gridrunner++ Enhanced", "1.2.0", "org.llamasoft.grpp.enhanced");
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | (opt.audio ? SDL_INIT_AUDIO : 0)))
         throw std::runtime_error(SDL_GetError());
     AppLifecycle lifecycle;

@@ -244,20 +244,32 @@ int main(int argc, char **argv) {
               "Window close did not prompt");
         choose(*f, 1);
         check(f->quitRequested() && !f->replay().pending(), "Close/No did not discard and exit");
-        // An actual terminal run triggers the prompt without requiring another confirmation.
+        // Natural Game Over remains visible; only dismissing it opens the save prompt.
         auto terminal = std::make_unique<Frontend>(assets, dir / "terminal/hst.txt");
         terminal->editionMenu(true);
         terminal->setNativeRate(true, 6);
         terminal->deferPresentation(true);
         terminal->enableReplays(true);
         start(*terminal);
-        for (int n = 0; n < 60000 && terminal->view() == FrontendView::Playing; ++n) {
+        for (int n = 0; n < 60000 && terminal->game().phase() != GamePhase::GameOver; ++n) {
             FrontendInput i;
             i.pointer = {120, 240, 0, 0};
             terminal->step(i);
         }
-        check(terminal->view() == FrontendView::ReplayPrompt && terminal->replay().info().completed,
-              "Natural Game Over did not prompt");
+        check(terminal->view() == FrontendView::Playing &&
+                  terminal->game().phase() == GamePhase::GameOver && terminal->replay().pending() &&
+                  terminal->replay().info().completed,
+              "Natural Game Over was replaced by replay prompt");
+        const auto terminalTicks = terminal->replay().info().ticks;
+        for (int n = 0; n < 240; ++n)
+            terminal->step(in);
+        check(terminal->view() == FrontendView::Playing &&
+                  terminal->replay().info().ticks == terminalTicks,
+              "Game Over idle animation entered prompt or extended recording");
+        FrontendInput dismiss;
+        dismiss.confirm = true;
+        terminal->step(dismiss);
+        check(terminal->view() == FrontendView::ReplayPrompt, "Game Over dismiss did not prompt");
         auto completePath = terminal->replayPath(9);
         choose(*terminal, 0);
         choose(*terminal, 9);

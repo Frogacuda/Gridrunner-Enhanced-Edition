@@ -12,7 +12,8 @@ struct GridPlane {
 std::vector<GridPlane> projectGrid(const DecorativeGrid &, double frameOffset = 0);
 void drawPreciseBackground(Canvas &, const DecorativeGrid &, double frameOffset = 0,
                            int compact = 0);
-void drawPreciseStars(Canvas &, const DecorativeStars &, double frameOffset = 0);
+void drawPreciseStars(Canvas &, const DecorativeStars &, double frameOffset = 0, double left = 0,
+                      double top = 0, double right = 240, double bottom = 320);
 Canvas resampleDecoration(const Canvas &, double frameOffset, int compact = 0);
 // Interpolates only a copy of the decorative recipe, never a game entity.
 class DecorativeCamera {

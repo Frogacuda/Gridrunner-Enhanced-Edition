@@ -19,6 +19,17 @@ OriginalOverscan originalOverscan(const Canvas &source, const Assets &assets, in
     result.actors.dimensions(w, h);
     result.actors.clear(source.clearColor());
     result.background.assign(size_t(w) * h, source.clearColor());
+    // Extend the source RGB565 rows behind both the in-frame and exterior stars.
+    for (const auto &row : source.draws()) {
+        if (!row.introGradient)
+            continue;
+        const int y = int(row.y);
+        const int paddedY = y + result.padY;
+        const int first = y == 0 ? 0 : paddedY;
+        const int last = y == source.height() - 1 ? h : paddedY + 1;
+        std::fill_n(result.background.begin() + size_t(first) * w, size_t(last - first) * w,
+                    row.color);
+    }
     auto pixel = [&](int x, int y, uint16_t ink) {
         x += result.padX;
         y += result.padY;
@@ -173,7 +184,7 @@ OriginalOverscan originalOverscan(const Canvas &source, const Assets &assets, in
     }
     for (size_t i = grid.valid ? grid.first : 0; i < source.draws().size(); ++i) {
         auto d = source.draws()[i];
-        if (d.sheet == -3)
+        if (d.sheet == -3 || d.introGradient)
             continue;
         d.x += result.padX;
         d.y += result.padY;

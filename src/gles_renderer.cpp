@@ -47,6 +47,7 @@ vec3 encodeLight(vec3 rgb){
 vec3 encodePremultiplied(vec3 rgb,float a){return a>0.0?encodeLight(rgb/a)*a:encodeLight(rgb);}
 void main() {
     beamCoverage=vec4(0);
+    if(mode==4){float b=clamp((127.0-203.0/256.0*(159.5-abs(uv.y-159.5)))/255.0,0.0,1.0);outputColor=vec4(encodeLight(vec3(0,0,b)),1);beamCoverage.a=1.0;return;}
     if(mode==3){float a=0.0;for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++)a+=maskAt(uv+vec2(float(x),float(y))*sampleStep);outputColor=vec4(encodeLight(foreground.rgb*a*(0.30/9.0)),0.0);return;}
     if(mode==2) { outputColor=vec4(encodePremultiplied(tint.rgb,tint.a),tint.a);beamCoverage.a=tint.a;return; }
     vec4 c=texture(image,clamp(uv,uvBounds.xy,uvBounds.zw));
@@ -181,6 +182,40 @@ GlesRenderer::GlesRenderer(SDL_Window *window, const Assets &assets) : window_(w
     glGenTextures(1, &rotationTexture_);
     glGenFramebuffers(1, &rotationFramebuffer_);
     reloadPages(assets);
+    // Presentation-only RGBA artwork bypasses the source RGB565 pages and prescale.
+    constexpr std::array<const char *, ArtworkCount> artworkFiles{
+        "enhanced-title.tga", "enhanced-title-aof.tga", "enhanced-splash.tga",
+        "enhanced-got-you.tga", "enhanced-level-up.tga", "enhanced-sheepie-save.tga",
+        "enhanced-level-arrow.tga"};
+    for (size_t i = 0; i < artworkTextures_.size(); ++i) {
+        const auto path = assets.root() / artworkFiles[i];
+        if (!std::filesystem::exists(path))
+            continue;
+        std::ifstream in(path, std::ios::binary);
+        std::array<unsigned char, 18> header{};
+        in.read(reinterpret_cast<char *>(header.data()), header.size());
+        const int w = header[12] | (header[13] << 8), h = header[14] | (header[15] << 8);
+        if (!in || header[1] || header[2] != 2 || header[16] != 32 || header[17] != 0x28 || w < 1 ||
+            h < 1 || w > 4096 || h > 4096)
+            throw std::runtime_error("Invalid Enhanced artwork: " + path.string());
+        in.ignore(header[0]);
+        std::vector<Rgba> pixels(size_t(w) * h);
+        in.read(reinterpret_cast<char *>(pixels.data()), std::streamsize(pixels.size() * 4));
+        if (!in)
+            throw std::runtime_error("Truncated Enhanced artwork: " + path.string());
+        for (auto &p : pixels) {
+            std::swap(p.r, p.b);
+            p.r = uint8_t((unsigned(p.r) * p.a + 127) / 255);
+            p.g = uint8_t((unsigned(p.g) * p.a + 127) / 255);
+            p.b = uint8_t((unsigned(p.b) * p.a + 127) / 255);
+        }
+        glGenTextures(1, &artworkTextures_[i]);
+        glBindTexture(GL_TEXTURE_2D, artworkTextures_[i]);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        artworkSizes_[i] = {w, h};
+    }
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
     glDisable(GL_DITHER);
@@ -202,6 +237,7 @@ GlesRenderer::~GlesRenderer() {
         if (vao_)
             glDeleteVertexArrays(1, &vao_);
         glDeleteTextures(int(textures_.size()), textures_.data());
+        glDeleteTextures(int(artworkTextures_.size()), artworkTextures_.data());
         glDeleteTextures(1, &rotationTexture_);
         glDeleteFramebuffers(1, &rotationFramebuffer_);
         if (referenceTexture_)
@@ -451,8 +487,10 @@ void GlesRenderer::present(const Canvas &sourceCanvas, const Assets &assets, boo
         glDrawArrays(GL_TRIANGLES, 0, GLsizei(batch.size() / 8));
         batch.clear();
     };
-    for (const auto &draw : reference && !expanded ? referenceDraw : canvas.draws()) {
+    for (auto draw : reference && !expanded ? referenceDraw : canvas.draws()) {
         if (draw.referenceOnly)
+            continue;
+        if (!reference && draw.legacyTitleCredit && artworkTextures_[StandardTitle])
             continue;
         if (draw.sheet == -4) {
             flush();
@@ -474,7 +512,7 @@ void GlesRenderer::present(const Canvas &sourceCanvas, const Assets &assets, boo
             continue;
         }
         flushBeams();
-        if (draw.sheet == -1) {
+        if (draw.sheet == -1 && !draw.smoothIntro) {
             if (!batch.empty() && batchDirect != draw.direct)
                 flush();
             batchDirect = draw.direct;
@@ -491,27 +529,70 @@ void GlesRenderer::present(const Canvas &sourceCanvas, const Assets &assets, boo
         flush();
         clip(draw.direct || draw.sheet == -2);
         float u0 = 0, v0 = 0, u1 = 1, v1 = 1;
+        const Artwork artwork = draw.titleLogo          ? (assets.arse() ? AofTitle : StandardTitle)
+                                : draw.levelSelectArrow ? LevelArrow
+                                : draw.spriteId == 0    ? Splash
+                                : draw.spriteId == 256  ? GotYou
+                                : draw.spriteId == 248  ? LevelUp
+                                : draw.spriteId == 249  ? SheepieSave
+                                                       : NoArtwork;
+        const bool enhancedArtwork =
+            !reference && artwork != NoArtwork && artworkTextures_[size_t(artwork)];
+        const bool mirrorArrow = enhancedArtwork && draw.levelSelectArrow && draw.spriteId == 3;
+        if (draw.smoothIntro) {
+            v0 = -draw.y / draw.height;
+            v1 = (logicalHeight - draw.y) / draw.height;
+            draw.x = draw.y = 0;
+            draw.width = float(logicalWidth);
+            draw.height = float(logicalHeight);
+            clip(true);
+        }
         if (draw.sheet != -1) {
-            const int tw =
-                draw.sheet == -2 ? referenceWidth : assets.page(size_t(draw.sheet)).width;
-            const int th =
-                draw.sheet == -2 ? referenceHeight : assets.page(size_t(draw.sheet)).height;
-            glBindTexture(GL_TEXTURE_2D,
-                          draw.sheet == -2 ? referenceTexture_ : textures_.at(size_t(draw.sheet)));
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                            linear && !draw.squareFragment ? GL_LINEAR : GL_NEAREST);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
-                            linear && !draw.squareFragment ? GL_LINEAR : GL_NEAREST);
+            const int tw = enhancedArtwork    ? artworkSizes_[size_t(artwork)][0]
+                           : draw.sheet == -2 ? referenceWidth
+                                              : assets.page(size_t(draw.sheet)).width;
+            const int th = enhancedArtwork    ? artworkSizes_[size_t(artwork)][1]
+                           : draw.sheet == -2 ? referenceHeight
+                                              : assets.page(size_t(draw.sheet)).height;
+            if (enhancedArtwork && draw.titleLogo)
+                draw.height = draw.width * th / tw;
+            glBindTexture(GL_TEXTURE_2D, enhancedArtwork    ? artworkTextures_[size_t(artwork)]
+                                         : draw.sheet == -2 ? referenceTexture_
+                                                            : textures_.at(size_t(draw.sheet)));
+            // The 6x Got You! texture contains crisp pixel faces beside vector lettering.
+            const bool pixelFaces = enhancedArtwork && artwork == GotYou;
+            const int filter = linear && !draw.squareFragment && !pixelFaces ? GL_LINEAR : GL_NEAREST;
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filter);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filter);
             u0 = float(draw.source.x) / tw;
             v0 = float(draw.source.y) / th;
             u1 = float(draw.source.x + draw.source.width) / tw;
             v1 = float(draw.source.y + draw.source.height) / th;
-            glUniform4f(uvBounds_, u0 + .5f / (tw * (draw.sheet == -2 ? 1 : 3)),
-                        v0 + .5f / (th * (draw.sheet == -2 ? 1 : 3)),
-                        u1 - .5f / (tw * (draw.sheet == -2 ? 1 : 3)),
-                        v1 - .5f / (th * (draw.sheet == -2 ? 1 : 3)));
+            if (enhancedArtwork) {
+                const auto &s = assets.sprite(size_t(draw.spriteId));
+                u0 = float(draw.source.x - s.x) / s.width;
+                v0 = float(draw.source.y - s.y) / s.height;
+                u1 = float(draw.source.x + draw.source.width - s.x) / s.width;
+                v1 = float(draw.source.y + draw.source.height - s.y) / s.height;
+                if (mirrorArrow) {
+                    const float left = 1.f - u1;
+                    u1 = 1.f - u0;
+                    u0 = left;
+                }
+            }
+            const int scale = enhancedArtwork || draw.sheet == -2 ? 1 : 3;
+            glUniform4f(uvBounds_, u0 + .5f / (tw * scale), v0 + .5f / (th * scale),
+                        u1 - .5f / (tw * scale), v1 - .5f / (th * scale));
+            if (enhancedArtwork && filter == GL_NEAREST) {
+                // Resolve exact texel-boundary ties consistently across separate tile quads.
+                constexpr float tieBias = .001f;
+                u0 += tieBias / tw;
+                u1 += tieBias / tw;
+                v0 += tieBias / th;
+                v1 += tieBias / th;
+            }
         }
-        glUniform1i(mode_, draw.sheet == -1 ? 2 : draw.paint.keyed ? 1 : 0);
+        glUniform1i(mode_, draw.smoothIntro ? 4 : draw.sheet == -1 ? 2 : draw.paint.keyed ? 1 : 0);
         setColor(foreground_, draw.sheet == -1 ? draw.color : draw.paint.foreground,
                  draw.sheet == -1 || draw.paint.foreground != 0);
         setColor(background_, draw.paint.background, draw.paint.background != 0);
@@ -525,7 +606,7 @@ void GlesRenderer::present(const Canvas &sourceCanvas, const Assets &assets, boo
                         dy = (corners[i][1] - .5f) * draw.height;
             vertices[i * 8] = cx + c * dx - s * dy;
             vertices[i * 8 + 1] = cy + s * dx + c * dy;
-            vertices[i * 8 + 2] = corners[i][0] ? u1 : u0;
+            vertices[i * 8 + 2] = bool(corners[i][0]) != mirrorArrow ? u1 : u0;
             vertices[i * 8 + 3] = corners[i][1] ? v1 : v0;
         }
         if (draw.silhouette && !reference) {
