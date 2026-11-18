@@ -1,18 +1,25 @@
 # Gridrunner++ Enhanced Edition 1.2.0
 
-- Enhanced adds high-resolution artwork for the Llamasoft splash, both title
-  screens, the Cippy level selectors, and the Got You!, Level Up!, and Sheepie
-  Save! announcements. The title artwork stays aligned when switching editions.
-- Draw to Edge extends the splash backdrop and menu stars in both renderers.
-  Original mode repeats the edge blue above and below the splash in portrait.
-- Game Over stays on screen until dismissed before the replay-save prompt.
-  Informational screens have no selection border.
-- Menus and the HUD use the original pixel font.
+Gridrunner++ Enhanced Edition is a native C++ rebuild of Gridrunner++, based on
+decompilation of the 2002 Windows PC release. It aims to modernize the original
+experience with improved support for different screen orientations and input
+devices, and offer a polished "remastered" experience in the form of optional
+graphical and performance improvements, while preserving gameplay and camera
+behavior.
 
-A native Windows and Android edition of Llamasoft's Gridrunner++, including
-Arse on Fire and an independent Endurance mode. Enhanced graphics add glowing
-vector beams and a grid rendered at the display's resolution. Original graphics
-retain the RGB565 software presentation. Both share the same gameplay core.
+Features:
+- Upcycled game logic allowing for faster response and gameplay up to 200fps.
+- Support for letterboxing or extended drawing, expanding the viewport for any
+  aspect ratio, and adapt in realtime to changing viewports or orientation.
+- Enhanced graphics mode uses a new renderer featuring simulated phosphor beams
+  and particles inspired by arcade vector displays.
+- Support for controllers and touchscreens alongside original mouse support.
+- Includes the variant Arse on Fire Special Edition and its included Endurance
+  mode, now accessible across both versions. 
+- Local replay saving. Replay recording is passive and always on, with saving
+  managed on quit or game over.
+- Hi-res UX and presentation assets in enhanced mode.
+
 
 ## Install and play
 
