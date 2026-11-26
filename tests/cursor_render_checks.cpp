@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "gles_renderer.hpp"
 #include <SDL3/SDL_main.h>
 #include <fstream>
